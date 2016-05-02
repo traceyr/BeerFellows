@@ -8,14 +8,20 @@
 <body>
   <header>
     <h1>BeerFellows</h1>
+    <h3>Rules of the quiz: Make a selection that best fits you.</h3>
   </header>
 
   <main>
-    <p>
-      Welcome to BeerFellows. We are an interactive web app to help you find the drink for you.
-    </p>
-    <button id="drinkBtn">Get A Drink</button>
-    <button id="reviewBtn">Read and Write Reviews</button>
+    <div id="quizQs">
+      <h3 id="qName">Question 1</h3>
+      <div id="qAnswers">
+        <button id="btnOne">A</button>
+        <button id="btnTwo">B</button>
+        <button id="btnThree">C</button>
+        <button id="btnFour">D</button>
+      </div>
+      <button id="resultsBtn">View Results</button>
+    </div>
   </main>
 
   <footer>
