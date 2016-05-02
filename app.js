@@ -11,7 +11,7 @@ function Drink(liquor, feeling, flavor) {
 }
 
 var screwDriver = new Drink('vodka', 'happy', 'sweet');
-var ginTonic = new Drink('gin', 'casual', 'triedandtrue');
+var ginTonic = new Drink('vodka', 'casual', 'triedandtrue');
 var teqSunrise = new Drink('tequila', 'angry', 'adventurous');
 
 //for loop to go through each index of object array
@@ -35,14 +35,15 @@ testBoxQ2.value = 'casual';
 testBoxQ2.addEventListener('click', clickQ2Handler);
 
 function clickQ2Handler(event) {
-  for (var i = 0; i < allDrinks.length; i++) {
-    if (event.target.value !== selectedDrinks[i].feeling) {
-      selectedDrinks.push(allDrinks[i]);
-      console.log(allDrinks[i]);
-    }
-    if (event.target.value === allDrinks[i].feeling) {
-      selectedDrinks.push(allDrinks[i]);
-      console.log(allDrinks[i]);
+  var result = [];
+  for (var i = 0; i < selectedDrinks.length; i++) {
+    if (event.target.value === selectedDrinks[i].feeling) {
+      result.push(selectedDrinks[i]);
     }
   }
+  selectedDrinks = result;
+  console.log(selectedDrinks);
+  return result;
 }
+
+var testBoxQ3 = doc
