@@ -1,7 +1,7 @@
 //globals
 var allDrinks = [];
 var selectedDrinks = [];
-var questionsArray = ['What type of liquor do you want?'];
+var questionsArray = ['What type of liquor do you want?', 'How are you feeling?', ' What\'s your flavor?'];
 var answersArray = [['beer', 'gin', 'rum', 'tequila', 'vodka', 'whiskey'], ['adventurous', 'party', 'triedandtrue'], ['sour', 'strong', 'sweet']];
 
 //object constructor
@@ -16,6 +16,14 @@ function Drink(drinkName, liquor, feeling, flavor/*, imageSrc*/, ingredients) {
   this.disLike = false;
   allDrinks.push(this);
 }
+
+function questionFunction(event){
+  for(var i = 0; i < questionsArray.length; i++){
+    var elClicko = document.getElementById('qName');
+    elClicko.textContent = questionsArray[i];
+  }
+}
+questionFunction();
 
 var screwDriver = new Drink('Screwdriver', 'vodka', 'triedandtrue', 'sweet', ['Vodka', 'Orange Juice'
 ]);
@@ -55,3 +63,17 @@ function startButtonHandler(event) {
   document.getElementById('introPage').style.display = 'none';
   document.getElementById('gamePage').style.display = 'flex';
 }
+var elcicker = document.getElementById('lower-buttons');
+elcicker.addEventListener('click', questionFunction);
+
+//CSS Magin
+$('.intro-buttons').hover(function () {
+  $(this).addClass('magictime puffIn');
+});
+
+$(function(){
+  $('.css-typing').typed({
+    strings: ['First sentence.', 'Second sentence.'],
+    typeSpeed: 0
+  });
+});
