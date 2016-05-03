@@ -34,7 +34,7 @@ body {
   display: flex;
   justify-content: center;
 }
- #dranks1 {
+ #startBtn {
    background-color: black;
    border: 2px solid black;
    color: white;
@@ -42,7 +42,7 @@ body {
    margin-left: 295px;
  }
 
- #dranks2 {
+ #reviewBtn {
    background-color: black;
    border: 2px solid black;
    color: white;
@@ -71,4 +71,7 @@ body {
 
 .two-buttons {
   height: 38px;
+}
+#gamePage {
+  display: none;
 }
