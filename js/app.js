@@ -12,7 +12,7 @@ var qAnswers = document.getElementById('qAnswers');
 //globals
 var allDrinks = [];
 var selectedDrinks = [];
-var questionsArray = ['What type of liquor do you want?'];
+var questionsArray = ['What type of liquor do you want?', 'How are you feeling?', ' What\'s your flavor?'];
 var answersArray = [['beer', 'gin', 'rum', 'tequila', 'vodka', 'whiskey'], ['adventurous', 'party', 'triedandtrue'], ['sour', 'strong', 'sweet']];
 
 //object constructor
@@ -28,7 +28,20 @@ function Drink(drinkName, liquor, feeling, flavor/*, imageSrc*/, ingredients) {
   allDrinks.push(this);
 }
 
+<<<<<<< HEAD:js/app.js
+function questionFunction(event){
+  for(var i = 0; i < questionsArray.length; i++){
+    var elClicko = document.getElementById('qName');
+    elClicko.textContent = questionsArray[i];
+  }
+}
+questionFunction();
+
+var screwDriver = new Drink('Screwdriver', 'vodka', 'triedandtrue', 'sweet', ['Vodka', 'Orange Juice'
+]);
+=======
 var screwDriver = new Drink('Screwdriver', 'vodka', 'triedandtrue', 'sweet', ['Vodka', 'Orange Juice']);
+>>>>>>> master:app.js
 var ginTonic = new Drink('Gin and Tonic', 'gin', 'triedandtrue', 'sour' ['Gin', 'Tonic']);
 var teqSunrise = new Drink('Tequila Sunrise', 'tequila', 'adventurous', 'sweet', ['Tequila', 'Orange Juice', 'Cherry Grenadine']);
 var amf = new Drink('Adios Mother F****r', 'tequila', 'party', 'strong', ['Tequila', 'Vodka', 'Triple Sec', 'Gin', 'Blue Curacao', 'Sprite', 'Sour Mix']);
@@ -111,3 +124,25 @@ function clickQ3Handler(event) {
 
 var startBtn = document.getElementById('startBtn');
 startBtn.addEventListener('click', startButtonHandler);
+<<<<<<< HEAD:js/app.js
+
+function startButtonHandler(event) {
+  document.getElementById('introPage').style.display = 'none';
+  document.getElementById('gamePage').style.display = 'flex';
+}
+var elcicker = document.getElementById('lower-buttons');
+elcicker.addEventListener('click', questionFunction);
+
+//CSS Magin
+$('.intro-buttons').hover(function () {
+  $(this).addClass('magictime puffIn');
+});
+
+$(function(){
+  $('.css-typing').typed({
+    strings: ['First sentence.', 'Second sentence.'],
+    typeSpeed: 0
+  });
+});
+=======
+>>>>>>> master:app.js
