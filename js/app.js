@@ -113,8 +113,3 @@ function clickQ3Handler(event) {
 
 var startBtn = document.getElementById('startBtn');
 startBtn.addEventListener('click', startButtonHandler);
-
-function startButtonHandler(event) {
-  document.getElementById('introPage').style.display = 'none';
-  document.getElementById('gamePage').style.display = 'flex';
-}
