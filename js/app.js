@@ -12,7 +12,7 @@ var qAnswers = document.getElementById('qAnswers');
 //globals
 var allDrinks = [];
 var selectedDrinks = [];
-var questionsArray = ['What type of liquor do you want?'];
+var questionsArray = ['What type of liquor do you want?', 'How are you feeling?', ' What\'s your flavor?'];
 var answersArray = [['beer', 'gin', 'rum', 'tequila', 'vodka', 'whiskey'], ['adventurous', 'party', 'triedandtrue'], ['sour', 'strong', 'sweet']];
 
 //object constructor
@@ -27,6 +27,9 @@ function Drink(drinkName, liquor, feeling, flavor/*, imageSrc*/, ingredients) {
   this.disLike = false;
   allDrinks.push(this);
 }
+
+var screwDriver = new Drink('Screwdriver', 'vodka', 'triedandtrue', 'sweet', ['Vodka', 'Orange Juice'
+]);
 
 var screwDriver = new Drink('Screwdriver', 'vodka', 'triedandtrue', 'sweet', ['Vodka', 'Orange Juice']);
 var ginTonic = new Drink('Gin and Tonic', 'gin', 'triedandtrue', 'sour' ['Gin', 'Tonic']);
@@ -74,7 +77,6 @@ function clickQ1Handler(event) {
   return selectedDrinks;
 }
 
-
 function clickQ2Handler(event) {
   var result = [];
   for (var i = 0; i < selectedDrinks.length; i++) {
@@ -111,3 +113,8 @@ function clickQ3Handler(event) {
 
 var startBtn = document.getElementById('startBtn');
 startBtn.addEventListener('click', startButtonHandler);
+
+function startButtonHandler(event) {
+  document.getElementById('introPage').style.display = 'none';
+  document.getElementById('gamePage').style.display = 'flex';
+}
