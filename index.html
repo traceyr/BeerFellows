@@ -2,53 +2,56 @@
 <html>
 <head>
   <title> Beer Fellows Drink Selector </title>
-  <link href="style.css" rel="stylesheet" type="text/css">
+  <link href="css/skeleton.css" rel="stylesheet" type="text/css">
+  <link href="css/normalize.css" rel="stylesheet" type="text/css">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Orbitron:900" rel="stylesheet" type="text/css">
+  <link href="http://fonts.googleapis.com/css?family=Muli" rel="stylesheet" type="text/css">
+
 </head>
 
 <body>
-  <header>
-    <h1>BeerFellows</h1>
-  </header>
-
   <main>
-    <div id="introPage">
-      <p>
-        Welcome to BeerFellows. We are an interactive web app to help you find the drink for you.
-      </p>
-      <button id="startBtn">Get A Drink</button>
-      <button id="reviewBtn">Read and Write Reviews</button>
-    </div>
-    <div id="gamePage">
-      <div id="quizQs">
-        <h3 id="qName">Question 1</h3>
-        <div id="qAnswers">
-          <button id="btnOne" class="quiz-button">A</button>
-          <button id="btnTwo" class="quiz-button">B</button>
-          <button id="btnThree" class="quiz-button">C</button>
-          <button id="btnFour" class="quiz-button">D</button>
-          <button id="btnFive" class="quiz-button">E</button>
-          <button id="btnSix" class="quiz-button">F</button>
+    <section id="introduction" class="introduction u-full-width">
+      <div class="container">
+        <div class="row">
+          <div class="header twelve column">
+          <h1 id="logo"><span id="beer">beer</span>Fellows</h1>
         </div>
-        <button id="resultsBtn">View Results</button>
+          <div class="twelve column">
+            <div id="introPage">
+            <div class="p-tag">
+            <p id="mid-border" class="css-typing">Welcome to beerFellows. We are an interactive web app to help find the perfect drank to compliment your mood. Whether your happy, angry, or just ready to party we have the perfect drink selections to capture that feeling.  So what are you waiting for? don't be shy, just push that button below and lets get things started.</p>
+          </div>
+            <div class="intro-buttons">
+              <div class="ten column two-buttons">
+                <button id="startBtn" class="button-primary">Drinks!!!</button>
+                <button id="reviewBtn" class="button-primary">Reviews</button>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="twelve column">
+            <div id="gamePage">
+              <div id="quizQs">
+                <h3 id="qName">Question 1</h3>
+                <div id="qAnswers">
+                  <button id="btnOne" class="quiz-button">A</button>
+                  <button id="btnTwo" class="quiz-button">B</button>
+                  <button id="btnThree" class="quiz-button">C</button>
+                  <button id="btnFour" class="quiz-button">D</button>
+                  <button id="btnFive" class="quiz-button">E</button>
+                  <button id="btnSix" class="quiz-button">F</button>
+                </div>
+                <button id="resultsBtn">View Results</button>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
-  </main>
-
-  <footer>
-    <ul>
-      <li>
-        Home
-      </li>
-      <li>
-        Quiz
-      </li>
-      <li>
-        Reviews
-      </li>
-      About Us
-    </ul>
-  </footer>
-  <script src="app.js"></script>
+    </section>
+  <script src="js/app.js"></script>
+</main>
 </body>
 
 </html>
