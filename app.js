@@ -1,25 +1,31 @@
 //globals
 var allDrinks = [];
 var selectedDrinks = [];
+var questionsArray = ['What type of liquor do you want?'];
+var answersArray = [['beer', 'gin', 'rum', 'tequila', 'vodka', 'whiskey'], ['adventurous', 'party', 'triedandtrue'], ['sour', 'strong', 'sweet']];
 
 //object constructor
-function Drink(liquor, feeling, flavor) {
+function Drink(drinkName, liquor, feeling, flavor/*, imageSrc*/, ingredients) {
+  this.drinkName = drinkName;
   this.liquor = liquor;
   this.feeling = feeling;
   this.flavor = flavor;
+  // this.imageSrc = '<img src="' + path + '" alt="' + this.drinkName + '" id="' + this.drinkName + '">';
+  this.ingredients = ingredients;
+  this.like = false;
+  this.disLike = false;
   allDrinks.push(this);
 }
 
-var screwDriver = new Drink('vodka', 'happy', 'sweet');
-var ginTonic = new Drink('vodka', 'casual', 'triedandtrue');
-var teqSunrise = new Drink('tequila', 'angry', 'adventurous');
+var screwDriver = new Drink('Screwdriver', 'vodka', 'triedandtrue', 'sweet', ['Vodka', 'Orange Juice'
+]);
+var ginTonic = new Drink('Gin and Tonic', 'gin', 'triedandtrue', 'sour' ['Gin', 'Tonic']);
+var teqSunrise = new Drink('Tequila Sunrise', 'tequila', 'adventurous', 'sweet', ['Tequila', 'Orange Juice', 'Cherry Grenadine']);
+var amf = new Drink('Adios Mother F****r', 'tequila', 'party', 'strong', ['Tequila', 'Vodka', 'Triple Sec', 'Gin', 'Blue Curacao', 'Sprite', 'Sour Mix']);
+var mannys = new Drink('Mac & Jack', 'beer', 'adventurous', 'strong', ['Local Brew']);
 
 //for loop to go through each index of object array
 //inside click handler
-
-var testBox = document.getElementById('q1box');
-testBox.value = "vodka";
-testBox.addEventListener('click', clickQ1Handler);
 
 function clickQ1Handler(event) {
   for (var i = 0; i < allDrinks.length; i++) {
@@ -29,10 +35,6 @@ function clickQ1Handler(event) {
     }
   }
 }
-
-var testBoxQ2 = document.getElementById('q2box');
-testBoxQ2.value = 'casual';
-testBoxQ2.addEventListener('click', clickQ2Handler);
 
 function clickQ2Handler(event) {
   var result = [];
@@ -46,4 +48,10 @@ function clickQ2Handler(event) {
   return result;
 }
 
-var testBoxQ3 = doc
+var startBtn = document.getElementById('startBtn');
+startBtn.addEventListener('click', startButtonHandler);
+
+function startButtonHandler(event) {
+  document.getElementById('introPage').style.display = 'none';
+  document.getElementById('gamePage').style.display = 'flex';
+}
