@@ -91,9 +91,6 @@ function clickQ2Handler(event) {
   btnOne.textContent = answersArray[2][0];
   btnTwo.textContent = answersArray[2][1];
   btnThree.textContent = answersArray[2][2];
-  // console.log(selectedDrinks);
-  // countClicks++;
-  // questionsPlease();
   qAnswers.removeEventListener('click', clickQ2Handler);
   qAnswers.addEventListener('click', clickQ3Handler);
   return selectedDrinks;
