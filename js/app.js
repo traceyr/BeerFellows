@@ -6,6 +6,8 @@ var btnThree = document.getElementById('btnThree');
 var btnFour = document.getElementById('btnFour');
 var btnFive = document.getElementById('btnFive');
 var btnSix = document.getElementById('btnSix');
+var resultsBtn = document.getElementById('resultsBtn');
+var resultsDiv = document.getElementById('resultsDiv');
 var getQuestions = document.getElementById('qName');
 var qAnswers = document.getElementById('qAnswers');
 
@@ -108,7 +110,23 @@ function clickQ3Handler(event) {
     console.table(selectedDrinks);
   }
   qAnswers.removeEventListener('click', clickQ3Handler);
+  resultsBtn.addEventListener('click', clickResultsHandler);
+  qAnswers.style.display = 'none';
+  getQuestions.style.display = 'none';
+  resultsBtn.style.display = 'flex';
   return selectedDrinks;
+}
+
+function clickResultsHandler(event) {
+  resultsBtn.style.display = 'none';
+  resultsDiv.style.display = 'flex';
+  var drinkDiv = document.createElement('div');
+  drinkDiv.id = 'drinkDiv';
+  resultsDiv.appendChild(drinkDiv);
+  //put in img url
+  var drinkName = document.createElement('h4');
+  drinkName.textContent = selectedDrinks[0].drinkName;
+  drinkDiv.appendChild(drinkName);
 }
 
 var startBtn = document.getElementById('startBtn');
