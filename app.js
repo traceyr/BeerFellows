@@ -1,3 +1,5 @@
+'use strict';
+
 var btnOne = document.getElementById('btnOne');
 var btnTwo = document.getElementById('btnTwo');
 var btnThree = document.getElementById('btnThree');
@@ -32,14 +34,23 @@ var teqSunrise = new Drink('Tequila Sunrise', 'tequila', 'adventurous', 'sweet',
 var amf = new Drink('Adios Mother F****r', 'tequila', 'party', 'strong', ['Tequila', 'Vodka', 'Triple Sec', 'Gin', 'Blue Curacao', 'Sprite', 'Sour Mix']);
 var mannys = new Drink('Mac & Jack', 'beer', 'adventurous', 'strong', ['Local Brew']);
 
-//for loop to go through each index of object array
-//inside click handler
-//global document id's
-var buttons = document.querySelectorAll('.quiz-button');
-for (var i = 0; i < buttons.length; i++) {
-  if (document.addEventListener) {
-    buttons[i].addEventListener('click', clickQ1Handler);
-  }
+function startButtonHandler(event) {
+  document.getElementById('introPage').style.display = 'none';
+  document.getElementById('gamePage').style.display = 'flex';
+  getQuestions.textContent = questionsArray[0];
+  btnOne.id = answersArray[0][0];
+  btnTwo.id = answersArray[0][1];
+  btnThree.id = answersArray[0][2];
+  btnFour.id = answersArray[0][3];
+  btnFive.id = answersArray[0][4];
+  btnSix.id = answersArray[0][5];
+  btnOne.textContent = answersArray[0][0];
+  btnTwo.textContent = answersArray[0][1];
+  btnThree.textContent = answersArray[0][2];
+  btnFour.textContent = answersArray[0][3];
+  btnFive.textContent = answersArray[0][4];
+  btnSix.textContent = answersArray[0][5];
+  qAnswers.addEventListener('click', clickQ1Handler);
 };
 
 function clickQ1Handler(event) {
@@ -49,20 +60,20 @@ function clickQ1Handler(event) {
   for (var i = 0; i < allDrinks.length; i++) {
     if (event.target.id === allDrinks[i].liquor) {
       selectedDrinks.push(allDrinks[i]);
-      console.log(selectedDrinks);
     }
   }
+  console.table(selectedDrinks);
   btnOne.id = answersArray[1][0];
   btnTwo.id = answersArray[1][1];
   btnThree.id = answersArray[1][2];
   btnOne.textContent = answersArray[1][0];
   btnTwo.textContent = answersArray[1][1];
   btnThree.textContent = answersArray[1][2];
-  for (var i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener('click', clickQ2Handler);
-  }
+  qAnswers.removeEventListener('click', clickQ1Handler);
+  qAnswers.addEventListener('click', clickQ2Handler);
   return selectedDrinks;
 }
+
 
 function clickQ2Handler(event) {
   var result = [];
@@ -70,41 +81,36 @@ function clickQ2Handler(event) {
     if (event.target.id === selectedDrinks[i].feeling) {
       result.push(selectedDrinks[i]);
     }
+    selectedDrinks = result;
   }
-  selectedDrinks = result;
-  console.log(selectedDrinks);
+  console.log('feeling result');
+  console.table(selectedDrinks);
   btnOne.id = answersArray[2][0];
   btnTwo.id = answersArray[2][1];
   btnThree.id = answersArray[2][2];
   btnOne.textContent = answersArray[2][0];
   btnTwo.textContent = answersArray[2][1];
   btnThree.textContent = answersArray[2][2];
+  // console.log(selectedDrinks);
+  // countClicks++;
+  // questionsPlease();
+  qAnswers.removeEventListener('click', clickQ2Handler);
+  qAnswers.addEventListener('click', clickQ3Handler);
+  return selectedDrinks;
+}
+
+function clickQ3Handler(event) {
+  var testResult = [];
+  for (var i = 0; i < selectedDrinks.length; i++) {
+    if (event.target.id === selectedDrinks[i].flavor) {
+      testResult.push(selectedDrinks[i]);
+    }
+    selectedDrinks = testResult;
+    console.table(selectedDrinks);
+  }
+  qAnswers.removeEventListener('click', clickQ3Handler);
   return selectedDrinks;
 }
 
 var startBtn = document.getElementById('startBtn');
 startBtn.addEventListener('click', startButtonHandler);
-// qAnswers.addEventListener('click', function(event) {
-//   if (event.target.id !== 'qAnswers') {
-//
-//   }
-// })
-
-function startButtonHandler(event) {
-  document.getElementById('introPage').style.display = 'none';
-  document.getElementById('gamePage').style.display = 'flex';
-  btnOne.id = answersArray[0][0];
-  btnTwo.id = answersArray[0][1];
-  btnThree.id = answersArray[0][2];
-  btnFour.id = answersArray[0][3];
-  btnFive.id = answersArray[0][4];
-  btnSix.id = answersArray[0][5];
-  getQuestions.textContent = questionsArray[0];
-  btnOne.textContent = answersArray[0][0];
-  btnTwo.textContent = answersArray[0][1];
-  btnThree.textContent = answersArray[0][2];
-  btnFour.textContent = answersArray[0][3];
-  btnFive.textContent = answersArray[0][4];
-  btnSix.textContent = answersArray[0][5];
-
-}
