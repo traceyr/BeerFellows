@@ -47,6 +47,14 @@ body {
    border: 2px solid black;
    color: white;
  }
+
+ #resultsBtn {
+   display: none;
+ }
+
+ #resultsDiv {
+   display: none;
+ }
  /*.css-typing
  {
      width: 50em;

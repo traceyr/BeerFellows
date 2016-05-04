@@ -50,7 +50,7 @@ var hennessy = new Drink('Hennessy', '', 'triedandtrue', 'strong', 'img/hennessy
 var ipa = new Drink('IPA', 'beer', 'triedandtrue', 'strong', 'img/ipa.png', ['']);
 var jackDaniels = new Drink('Jack Daniels', 'whiskey', 'triedandtrue', 'strong', 'img/jack-daniels.png', ['Jack Daniels Whiskey']);
 var jameson  = new Drink('Jameson', 'whiskey', 'triedandtrue', 'strong', 'img/jameson.png', ['Jameson Whiskey']);
-var longIsland = new Drink('Long Island', 'gin' 'party', 'strong', 'img/long-island.png', [''] )
+var longIsland = new Drink('Long Island', 'gin' 'party', 'strong', 'img/long-island.png', [''] );
 
 function startButtonHandler(event) {
   document.getElementById('introPage').style.display = 'none';
