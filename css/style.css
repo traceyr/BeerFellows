@@ -144,3 +144,14 @@ article h1 {
   border-radius: 5px;
   font-size: 16px;
 }
+
+#resultsBtn {
+  display: none;
+  justify-content: center;
+  background-color: #B6A754;
+  color: white;
+  height: 60px;
+  width: 147px;
+  border-radius: 5px;
+  font-size: 16px;
+}
