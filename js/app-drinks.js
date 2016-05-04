@@ -11,6 +11,7 @@ function Drink(drinkName, liquor, feeling, flavor, imageSrc, ingredients) {
   this.ingredients = ingredients;
   this.like = false;
   this.disLike = false;
+  this.review = '';
   allDrinks.push(this);
 }
 
@@ -42,6 +43,7 @@ var imgDiv = document.getElementById('allImg');
 
 for (var i = 0; i < allDrinks.length; i++) {
   var createUl = document.createElement('ul');
+  createUl.id = 'number' + [i];
   imgDiv.appendChild(createUl);
   var createLiImages = document.createElement('li');
   createLiImages.innerHTML = allDrinks[i].imageSrc;
@@ -59,11 +61,7 @@ for (var i = 0; i < allDrinks.length; i++) {
     ingredientsLi.textContent = allDrinks[i].ingredients[j];
     ingUl.appendChild(ingredientsLi);
   }
-  // var button = document.createElement('button');
-  // var tn = document.createTextNode('Add Review');
-  // button.appendChild(tn);
-  // button.class = 'review-buttons';
-  // imgDiv.appendChild(button);
+
 
 }
 //form and dropdown with full list of drinks
@@ -99,3 +97,36 @@ createForm.appendChild(textLabel);
 var textArea = document.createElement('textarea');
 textArea.setAttribute('id', 'text-area');
 createForm.appendChild(textArea);
+
+
+var addReviewBtn = document.createElement('input');
+addReviewBtn.setAttribute('type', 'button');
+addReviewBtn.id = 'addReviewBtn';
+addReviewBtn.value = 'Add Review';
+createForm.appendChild(addReviewBtn);
+
+function addReviewHandler(e){
+  var text = document.getElementById('text-area').value;
+  console.log(text);
+  console.log(e.target.value);
+  var dropDownId = document.querySelector('select').value;
+  console.log(dropDownId);
+  for (var x = 0; x < allDrinks.length; x++){
+    if (dropDownId === allDrinks[x].drinkName){
+      var getUl = document.getElementById('number' + [x]);
+      console.log(getUl);
+      // var contents = document.getElementById('text-area').innerHTML;
+      console.log(allDrinks[x]);
+      allDrinks[x].review = text;
+      console.log(allDrinks[x].review);
+      // createUl.appendChild(reviewLi);
+
+      var reviewLi = document.createElement('li');
+      reviewLi.textContent = allDrinks[x].review;
+      getUl.appendChild(reviewLi);
+      console.log('please work');
+    }
+  }
+ }
+var testingBtn = document.getElementById('addReviewBtn');
+testingBtn.addEventListener('click', addReviewHandler);
