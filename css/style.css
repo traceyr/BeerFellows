@@ -75,6 +75,14 @@ span {
    color: white;
  }
 
+ #resultsBtn {
+   display: none;
+ }
+
+ #resultsDiv {
+   display: none;
+ }
+ 
 .liqButtons {
    background-color: #B6A754;
    color: white;
