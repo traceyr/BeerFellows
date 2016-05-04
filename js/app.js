@@ -89,16 +89,13 @@ function clickQ1Handler(event) {
   btnThree.textContent = answersArray[1][2];
   qAnswers.removeEventListener('click', clickQ1Handler);
   qAnswers.addEventListener('click', clickQ2Handler);
-  return selectedDrinks;
 }
 
 function clickQ2Handler(event) {
-  var result = [];
-  for (var i = 0; i < selectedDrinks.length; i++) {
-    if (event.target.id === selectedDrinks[i].feeling) {
-      result.push(selectedDrinks[i]);
+  for(var i = 0; i < selectedDrinks.length; i++) {
+    if (event.target.id !== selectedDrinks[i].feeling) {
+      selectedDrinks.splice(i, 1);
     }
-    selectedDrinks = result;
   }
   console.log('feeling result');
   console.table(selectedDrinks);
@@ -110,20 +107,16 @@ function clickQ2Handler(event) {
   btnThree.textContent = answersArray[2][2];
   qAnswers.removeEventListener('click', clickQ2Handler);
   qAnswers.addEventListener('click', clickQ3Handler);
-  return selectedDrinks;
 }
 
 function clickQ3Handler(event) {
-  var testResult = [];
-  for (var i = 0; i < selectedDrinks.length; i++) {
-    if (event.target.id === selectedDrinks[i].flavor) {
-      testResult.push(selectedDrinks[i]);
+  for(var i = 0; i < selectedDrinks.length; i++) {
+    if (event.target.id !== selectedDrinks[i].flavor) {
+      selectedDrinks.splice(i, 1);
     }
-    selectedDrinks = testResult;
-    console.table(selectedDrinks);
   }
+  console.table(selectedDrinks);
   qAnswers.removeEventListener('click', clickQ3Handler);
-  return selectedDrinks;
 }
 
 function clickResultsHandler(event) {
