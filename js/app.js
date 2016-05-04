@@ -8,6 +8,10 @@ var btnFive = document.getElementById('btnFive');
 var btnSix = document.getElementById('btnSix');
 var getQuestions = document.getElementById('qName');
 var qAnswers = document.getElementById('qAnswers');
+var resultsDiv = document.getElementById('resultsDiv');
+var resultsBtn = document.getElementById('resultsBtn');
+var qName = document.getElementById('qName');
+var imageClick = 0;
 
 //globals
 var allDrinks = [];
@@ -75,6 +79,7 @@ function clickQ1Handler(event) {
   btnFour.style.display = 'none';
   btnFive.style.display = 'none';
   btnSix.style.display = 'none';
+  getQuestions.textContent = questionsArray[1];
   for (var i = 0; i < allDrinks.length; i++) {
     if (event.target.id === allDrinks[i].liquor) {
       selectedDrinks.push(allDrinks[i]);
@@ -92,6 +97,7 @@ function clickQ1Handler(event) {
 }
 
 function clickQ2Handler(event) {
+  getQuestions.textContent = questionsArray[2];
   for(var i = 0; i < selectedDrinks.length; i++) {
     if (event.target.id !== selectedDrinks[i].feeling) {
       selectedDrinks.splice(i, 1);
@@ -110,6 +116,7 @@ function clickQ2Handler(event) {
 }
 
 function clickQ3Handler(event) {
+  qName.style.display = 'none';
   for(var i = 0; i < selectedDrinks.length; i++) {
     if (event.target.id !== selectedDrinks[i].flavor) {
       selectedDrinks.splice(i, 1);
@@ -117,6 +124,9 @@ function clickQ3Handler(event) {
   }
   console.table(selectedDrinks);
   qAnswers.removeEventListener('click', clickQ3Handler);
+  resultsBtn.addEventListener('click', clickResultsHandler);
+  qAnswers.style.display = 'none';
+  resultsBtn.style.display = 'flex';
 }
 
 function clickResultsHandler(event) {
@@ -125,9 +135,11 @@ function clickResultsHandler(event) {
   var drinkDiv = document.createElement('div');
   drinkDiv.id = 'drinkDiv';
   resultsDiv.appendChild(drinkDiv);
+  //
   var drinkName = document.createElement('h4');
   drinkName.textContent = selectedDrinks[imageClick].drinkName;
   drinkDiv.appendChild(drinkName);
+  //
   var drinkIngredientsList = document.createElement('ul');
   drinkDiv.appendChild(drinkIngredientsList);
 //still need image to display
@@ -137,22 +149,47 @@ function clickResultsHandler(event) {
     console.log(selectedDrinks[imageClick].ingredients[i]);
     drinkIngredientsList.appendChild(drinkIngredientsLi);
   }
+  //
   var thumbsUp = document.createElement('p');
   thumbsUp.textContent = 'Thumbs Up';
   var thumbsDown = document.createElement('p');
   thumbsDown.textContent = 'Thumbs Down';
   drinkDiv.appendChild(thumbsUp);
   drinkDiv.appendChild(thumbsDown);
+  //
+}
+  //
+  // if(imageClick > 0){
+  // }
 
+function renderNextBtn(event){
   var buttonNext = document.createElement('button');
   buttonNext.textContent = 'Next';
   buttonNext.class = 'arrowButton';
   resultsDiv.appendChild(buttonNext);
   buttonNext.addEventListener('click', function(){
+    resultsDiv.removeChild(drinkDiv);
     imageClick++;
     clickResultsHandler();
   });
 }
-
+renderNextBtn();
+function renderPreviousBtn(event){
+  var buttonPrevious = document.createElement('button');
+  buttonPrevious.textContent = 'Previous';
+  buttonPrevious.class = 'arrowButton';
+  resultsDiv.appendChild(buttonPrevious);
+  buttonPrevious.addEventListener('click', function(){
+    resultsDiv.removeChild(drinkDiv);
+    imageClick--;
+    clickResultsHandler();
+  });
+}
+renderPreviousBtn();
 var startBtn = document.getElementById('startBtn');
 startBtn.addEventListener('click', startButtonHandler);
+
+//when user answers q3, show 1st result & next button
+//on click 'next', show next drink, show next & previous buttons
+  //if drinkshown is drinks[0], don't show previous button
+  //else show both buttons
