@@ -140,7 +140,7 @@ function clickResultsHandler(event) {
   drinkDiv.appendChild(drinkName);
   var drinkIngredientsList = document.createElement('ul');
   drinkDiv.appendChild(drinkIngredientsList);
-  //IMAGEIMAGEIMAGEIMAGEIMAGEIMAGEIMAGEIMAGEIMAGEIMAGEIMAGEIMAGEIMAGE
+//still need image to display
   for (var i = 0; i < selectedDrinks[imageClick].ingredients.length; i++) {
     var drinkIngredientsLi = document.createElement('li');
     drinkIngredientsLi.textContent = selectedDrinks[imageClick].ingredients[i];
