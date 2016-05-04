@@ -38,8 +38,9 @@ var jackDaniels = new Drink('Jack Daniels', 'whiskey', 'triedandtrue', 'strong',
 var jameson  = new Drink('Jameson', 'whiskey', 'triedandtrue', 'strong', 'img/jameson.png', ['Jameson Whiskey']);
 var longIsland = new Drink('Long Island', 'gin', 'party', 'strong', 'img/long-island.png', ['']);
 
+var imgDiv = document.getElementById('allImg');
+
 for (var i = 0; i < allDrinks.length; i++) {
-  var imgDiv = document.getElementById('allImg');
   var createUl = document.createElement('ul');
   imgDiv.appendChild(createUl);
   var createLiImages = document.createElement('li');
@@ -58,9 +59,43 @@ for (var i = 0; i < allDrinks.length; i++) {
     ingredientsLi.textContent = allDrinks[i].ingredients[j];
     ingUl.appendChild(ingredientsLi);
   }
-  var button = document.createElement('button');
-  var tn = document.createTextNode('Add Review');
-  button.appendChild(tn);
-  button.class = 'review-buttons';
-  imgDiv.appendChild(button);
+  // var button = document.createElement('button');
+  // var tn = document.createTextNode('Add Review');
+  // button.appendChild(tn);
+  // button.class = 'review-buttons';
+  // imgDiv.appendChild(button);
+
 }
+//form and dropdown with full list of drinks
+var createForm = document.createElement('form');
+imgDiv.appendChild(createForm);
+var heading = document.createElement('h2');
+heading.innerHTML = 'Add a Review';
+createForm.appendChild(heading);
+var linebreak = document.createElement('br');
+createForm.appendChild(linebreak);
+var drinkLabel = document.createElement('label');
+drinkLabel.innerHTML = 'Name of Drink';
+createForm.appendChild(drinkLabel);
+var drinkSelect = document.createElement('select');
+drinkSelect.id = 'drink-selection';
+
+for (var c = 0; c < allDrinks.length; c++) {
+  var options = document.createElement('option');
+  options.value = allDrinks[c].drinkName;
+  var theText = document.createTextNode(allDrinks[c].drinkName);
+  options.appendChild(theText);
+  drinkSelect.appendChild(options);
+
+}
+
+createForm.appendChild(drinkSelect);
+
+var linebreakTwo = document.createElement('br');
+createForm.appendChild(linebreakTwo);
+var textLabel = document.createElement('label');
+textLabel.innerHTML = 'Your Review';
+createForm.appendChild(textLabel);
+var textArea = document.createElement('textarea');
+textArea.setAttribute('id', 'text-area');
+createForm.appendChild(textArea);
