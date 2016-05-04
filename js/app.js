@@ -89,16 +89,13 @@ function clickQ1Handler(event) {
   btnThree.textContent = answersArray[1][2];
   qAnswers.removeEventListener('click', clickQ1Handler);
   qAnswers.addEventListener('click', clickQ2Handler);
-  return selectedDrinks;
 }
 
 function clickQ2Handler(event) {
-  var result = [];
-  for (var i = 0; i < selectedDrinks.length; i++) {
-    if (event.target.id === selectedDrinks[i].feeling) {
-      result.push(selectedDrinks[i]);
+  for(var i = 0; i < selectedDrinks.length; i++) {
+    if (event.target.id !== selectedDrinks[i].feeling) {
+      selectedDrinks.splice(i, 1);
     }
-    selectedDrinks = result;
   }
   console.log('feeling result');
   console.table(selectedDrinks);
@@ -110,20 +107,51 @@ function clickQ2Handler(event) {
   btnThree.textContent = answersArray[2][2];
   qAnswers.removeEventListener('click', clickQ2Handler);
   qAnswers.addEventListener('click', clickQ3Handler);
-  return selectedDrinks;
 }
 
 function clickQ3Handler(event) {
-  var testResult = [];
-  for (var i = 0; i < selectedDrinks.length; i++) {
-    if (event.target.id === selectedDrinks[i].flavor) {
-      testResult.push(selectedDrinks[i]);
+  for(var i = 0; i < selectedDrinks.length; i++) {
+    if (event.target.id !== selectedDrinks[i].flavor) {
+      selectedDrinks.splice(i, 1);
     }
-    selectedDrinks = testResult;
-    console.table(selectedDrinks);
   }
+  console.table(selectedDrinks);
   qAnswers.removeEventListener('click', clickQ3Handler);
-  return selectedDrinks;
+}
+
+function clickResultsHandler(event) {
+  resultsBtn.style.display = 'none';
+  resultsDiv.style.display = 'flex';
+  var drinkDiv = document.createElement('div');
+  drinkDiv.id = 'drinkDiv';
+  resultsDiv.appendChild(drinkDiv);
+  var drinkName = document.createElement('h4');
+  drinkName.textContent = selectedDrinks[imageClick].drinkName;
+  drinkDiv.appendChild(drinkName);
+  var drinkIngredientsList = document.createElement('ul');
+  drinkDiv.appendChild(drinkIngredientsList);
+//still need image to display
+  for (var i = 0; i < selectedDrinks[imageClick].ingredients.length; i++) {
+    var drinkIngredientsLi = document.createElement('li');
+    drinkIngredientsLi.textContent = selectedDrinks[imageClick].ingredients[i];
+    console.log(selectedDrinks[imageClick].ingredients[i]);
+    drinkIngredientsList.appendChild(drinkIngredientsLi);
+  }
+  var thumbsUp = document.createElement('p');
+  thumbsUp.textContent = 'Thumbs Up';
+  var thumbsDown = document.createElement('p');
+  thumbsDown.textContent = 'Thumbs Down';
+  drinkDiv.appendChild(thumbsUp);
+  drinkDiv.appendChild(thumbsDown);
+
+  var buttonNext = document.createElement('button');
+  buttonNext.textContent = 'Next';
+  buttonNext.class = 'arrowButton';
+  resultsDiv.appendChild(buttonNext);
+  buttonNext.addEventListener('click', function(){
+    imageClick++;
+    clickResultsHandler();
+  });
 }
 
 var startBtn = document.getElementById('startBtn');
