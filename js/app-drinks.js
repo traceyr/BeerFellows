@@ -58,4 +58,9 @@ for (var i = 0; i < allDrinks.length; i++) {
     ingredientsLi.textContent = allDrinks[i].ingredients[j];
     ingUl.appendChild(ingredientsLi);
   }
+  var button = document.createElement('button');
+  var tn = document.createTextNode('Add Review');
+  button.appendChild(tn);
+  button.class = 'review-buttons';
+  imgDiv.appendChild(button);
 }
