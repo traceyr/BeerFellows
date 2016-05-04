@@ -1,5 +1,5 @@
 'use strict';
-
+alert('Warning: You should be at least 21 to drink and by no means are we promoting under age drinking.');
 var btnOne = document.getElementById('btnOne');
 var btnTwo = document.getElementById('btnTwo');
 var btnThree = document.getElementById('btnThree');
