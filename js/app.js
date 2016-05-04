@@ -8,6 +8,8 @@ var btnFive = document.getElementById('btnFive');
 var btnSix = document.getElementById('btnSix');
 var getQuestions = document.getElementById('qName');
 var qAnswers = document.getElementById('qAnswers');
+var resultsDiv = document.getElementById('resultsDiv');
+var resultsBtn = document.getElementById('resultsBtn');
 
 //globals
 var allDrinks = [];
@@ -117,6 +119,9 @@ function clickQ3Handler(event) {
   }
   console.table(selectedDrinks);
   qAnswers.removeEventListener('click', clickQ3Handler);
+  resultsBtn.addEventListener('click', clickResultsHandler);
+  qAnswers.style.display = 'none';
+  resultsBtn.style.display = 'flex';
 }
 
 function clickResultsHandler(event) {
