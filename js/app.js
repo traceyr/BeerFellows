@@ -6,11 +6,8 @@ var btnThree = document.getElementById('btnThree');
 var btnFour = document.getElementById('btnFour');
 var btnFive = document.getElementById('btnFive');
 var btnSix = document.getElementById('btnSix');
-var resultsBtn = document.getElementById('resultsBtn');
-var resultsDiv = document.getElementById('resultsDiv');
 var getQuestions = document.getElementById('qName');
 var qAnswers = document.getElementById('qAnswers');
-var imageClick = 0;
 
 //globals
 var allDrinks = [];
@@ -19,18 +16,43 @@ var questionsArray = ['What type of liquor do you want?', 'How are you feeling?'
 var answersArray = [['beer', 'gin', 'rum', 'tequila', 'vodka', 'whiskey'], ['adventurous', 'party', 'triedandtrue'], ['sour', 'strong', 'sweet']];
 
 //object constructor
-function Drink(drinkName, liquor, feeling, flavor/*, imageSrc*/, ingredients) {
+function Drink(drinkName, liquor, feeling, flavor, imageSrc, ingredients) {
   this.drinkName = drinkName;
   this.liquor = liquor;
   this.feeling = feeling;
   this.flavor = flavor;
-  // this.imageSrc = '<img src="' + path + '" alt="' + this.drinkName + '" id="' + this.drinkName + '">';
+  this.imageSrc = '<img src="' + imageSrc + '" alt="' + this.drinkName + '" id="' + this.drinkName + '">';
   this.ingredients = ingredients;
   this.like = false;
   this.disLike = false;
   allDrinks.push(this);
 }
 
+var screwDriver = new Drink('Screwdriver', 'vodka', 'triedandtrue', 'sweet', 'img/screwdriver.png', ['Vodka', 'Orange Juice']);
+var ginTonic = new Drink('Gin and Tonic', 'gin', 'triedandtrue', 'sour', 'img/gin-and-tonic.png', ['Gin', 'Tonic']);
+var teqSunrise = new Drink('Tequila Sunrise', 'tequila', 'adventurous', 'sweet', 'img/tequila-sunrise.png', ['Tequila', 'Orange Juice', 'Cherry Grenadine']);
+var amf = new Drink('Adios Mother F****r', 'tequila', 'party', 'strong', 'img/amf.png', ['Tequila', 'Vodka', 'Triple Sec', 'Gin', 'Blue Curacao', 'Sprite', 'Sour Mix']);
+var birthdayCake = new Drink('Birthday Cake Shot', 'vodka', 'party', 'sweet', 'img/birthday-cake.png', ['Baileys Irish Cream', 'Smirnoff Cake Flavored Vodka', 'Whipped Cream', 'Sprinkles']);
+var bloodyMary = new Drink('Bloody Mary', 'vodka', 'triedandtrue', 'strong', 'img/bloody-mary.png', ['']);
+var blueMoon = new Drink('Blue Moon', 'beer', 'triedandtrue', 'strong', 'img/blue-moon.png', ['']);
+var cadMargarita = new Drink('Cadillac Margarita', 'tequila', 'party', 'sour', 'img/cadillac-margarita.png', ['Tequila', 'Grand Marnier', 'Lime Juice', 'Salt on the Rim']);
+var ciroc = new Drink('Ciroc', 'vodka', 'party', 'strong', 'img/ciroc.png', ['Ciroc Vodka']);
+var cosmo = new Drink('Cosmo', 'vodka', 'triedandtrue', 'sour', 'img/cosmo.png', ['']);
+var cubaLibre = new Drink('Cuba Libre', 'rum', 'triedandtrue', 'sweet', 'img/cuba-libre.png', ['Rum', 'Coke', 'Lime']);
+var donJulio = new Drink('Don Julio', 'tequila', 'party', 'strong', 'img/don-julio.png', ['Don Julio Blanco Tequila']);
+var duckFart = new Drink('Duck Fart', 'whiskey', 'party', 'sweet', 'img/duck-fart.png', ['Whiskey', 'Baileys Irish Cream', 'Kahlua']);
+var elecTea = new Drink('Electric Iced Tea', 'gin', 'adventurous', 'strong', 'img/electric-iced-tea.png', ['Gin', 'Vodka', 'Light Rum', 'Tequila', 'Blue Curacao', 'Sour Mix', 'Lemon-lime Soda']);
+var fourHorse = new Drink ('The Four Horsemen', 'whiskey', 'adventurous', 'strong', 'img/four-horsemen.png', ['']);
+var ginAndJuice = new Drink('Gin and Juice', 'gin', 'triedandtrue', 'sweet', 'img/gin-and-juice.png', ['']);
+var greyGoose = new Drink('Grey Goose', 'vodka', 'party', 'strong', 'img/grey-goose.png', ['']);
+var hefe = new Drink('Hefeweizen', 'beer', 'triedandtrue', 'strong', 'img/hefe.png' , ['']);
+var hennessy = new Drink('Hennessy', '', 'triedandtrue', 'strong', 'img/hennessy.png', ['']);
+var ipa = new Drink('IPA', 'beer', 'triedandtrue', 'strong', 'img/ipa.png', ['']);
+var jackDaniels = new Drink('Jack Daniels', 'whiskey', 'triedandtrue', 'strong', 'img/jack-daniels.png', ['Jack Daniels Whiskey']);
+var jameson  = new Drink('Jameson', 'whiskey', 'triedandtrue', 'strong', 'img/jameson.png', ['Jameson Whiskey']);
+var longIsland = new Drink('Long Island', 'gin', 'party', 'strong', 'img/long-island.png', ['']);
+
+=======
 var screwDriver = new Drink('Screwdriver', 'vodka', 'triedandtrue', 'sweet', 'img/screwdriver.png', ['Vodka', 'Orange Juice']);
 var ginTonic = new Drink('Gin and Tonic', 'gin', 'triedandtrue', 'sour', 'img/gin-and-tonic.png', ['Gin', 'Tonic']);
 var teqSunrise = new Drink('Tequila Sunrise', 'tequila', 'adventurous', 'sweet', 'img/tequila-sunrise.png', ['Tequila', 'Orange Juice', 'Cherry Grenadine']);
@@ -96,18 +118,13 @@ function clickQ1Handler(event) {
 }
 
 function clickQ2Handler(event) {
-  for(var i = 0; i < selectedDrinks.length; i++) {
-    if (event.target.id !== selectedDrinks[i].feeling) {
-      selectedDrinks.splice(i, 1);
+  var result = [];
+  for (var i = 0; i < selectedDrinks.length; i++) {
+    if (event.target.id === selectedDrinks[i].feeling) {
+      result.push(selectedDrinks[i]);
     }
+    selectedDrinks = result;
   }
-  // var result = [];
-  // for (var i = 0; i < selectedDrinks.length; i++) {
-  //   if (event.target.id === selectedDrinks[i].feeling) {
-  //     result.push(selectedDrinks[i]);
-  //   }
-  //   selectedDrinks = result;
-  // }
   console.log('feeling result');
   console.table(selectedDrinks);
   btnOne.id = answersArray[2][0];
@@ -122,24 +139,15 @@ function clickQ2Handler(event) {
 }
 
 function clickQ3Handler(event) {
-  for(var i = 0; i < selectedDrinks.length; i++) {
-    if (event.target.id !== selectedDrinks[i].flavor) {
-      selectedDrinks.splice(i, 1);
+  var testResult = [];
+  for (var i = 0; i < selectedDrinks.length; i++) {
+    if (event.target.id === selectedDrinks[i].flavor) {
+      testResult.push(selectedDrinks[i]);
     }
+    selectedDrinks = testResult;
+    console.table(selectedDrinks);
   }
-  // var testResult = [];
-  // for (var i = 0; i < selectedDrinks.length; i++) {
-  //   if (event.target.id === selectedDrinks[i].flavor) {
-  //     testResult.push(selectedDrinks[i]);
-  //   }
-  //   selectedDrinks = testResult;
-  console.table(selectedDrinks);
-  // }
   qAnswers.removeEventListener('click', clickQ3Handler);
-  resultsBtn.addEventListener('click', clickResultsHandler);
-  qAnswers.style.display = 'none';
-  getQuestions.style.display = 'none';
-  resultsBtn.style.display = 'flex';
   return selectedDrinks;
 }
 
