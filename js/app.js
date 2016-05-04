@@ -11,6 +11,10 @@ var qAnswers = document.getElementById('qAnswers');
 var resultsDiv = document.getElementById('resultsDiv');
 var resultsBtn = document.getElementById('resultsBtn');
 var qName = document.getElementById('qName');
+var buttonNext = document.createElement('button');
+var buttonPrevious = document.createElement('button');
+var buttonNext = document.createElement('button');
+var buttonPrevious = document.createElement('button');
 var imageClick = 0;
 
 //globals
@@ -127,7 +131,10 @@ function clickQ3Handler(event) {
   resultsBtn.addEventListener('click', clickResultsHandler);
   qAnswers.style.display = 'none';
   resultsBtn.style.display = 'flex';
+  buttonPrevious.style.display = 'none';
+  renderPreviousBtn();
 }
+//handle next and previous function should increment or decrement if inded == 0 hide previous button if index === last hide the next button
 
 function clickResultsHandler(event) {
   resultsBtn.style.display = 'none';
@@ -159,48 +166,60 @@ function clickResultsHandler(event) {
   drinkDiv.appendChild(thumbsDown);
   //
 }
-renderPreviousBtn();
+
   //
   // if(imageClick > 0){
   // }
 
 function renderNextBtn(event){
-  var buttonNext = document.createElement('button');
+  // var buttonNext = document.createElement('button');
   buttonNext.textContent = 'Next';
   buttonNext.id = 'nextButton';
   resultsDiv.appendChild(buttonNext);
   buttonNext.addEventListener('click', function(){
-    if (imageClick === selectedDrinks.length - 1){
+    imageClick++;
+    if (imageClick === 0) {
+      buttonNext.style.display = 'flex';
+      buttonPrevious.style.display = 'none';
+    }else if (imageClick === selectedDrinks.length - 1) {
       buttonNext.style.display = 'none';
+      buttonPrevious.style.display = 'flex';
     } else {
-      renderPreviousBtn();
-      resultsDiv.removeChild(drinkDiv);
-      imageClick++;
-      clickResultsHandler();
+      buttonNext.style.display = 'flex';
+      buttonPrevious.style.display = 'flex';
     }
+    resultsDiv.removeChild(drinkDiv);
+    clickResultsHandler();
   });
 }
 renderNextBtn();
 
 function renderPreviousBtn(event){
-  var buttonPrevious = document.createElement('button');
+  // var buttonPrevious = document.createElement('button');
   buttonPrevious.id = 'arrowButton';
-  // buttonPrevious.style.display = 'none';
   buttonPrevious.textContent = 'Previous';
   resultsDiv.appendChild(buttonPrevious);
   console.log('imageClick = ' + imageClick);
+  // buttonPrevious.style.display = 'none';
   buttonPrevious.addEventListener('click', function(){
     // if (imageClick === 0) {
     //   console.log(imageClick);
     //   buttonPrevious.style.display = 'none';
     //   clickResultsHandler();
-    if (imageClick > 0){
+    imageClick--;
+    if (imageClick === 0) {
+      buttonNext.style.display = 'flex';
+      buttonPrevious.style.display = 'none';
+    }else if (imageClick === selectedDrinks.length - 1) {
+      buttonNext.style.display = 'none';
       buttonPrevious.style.display = 'flex';
-      console.log(imageClick);
-      resultsDiv.removeChild(drinkDiv);
-      imageClick--;
-      clickResultsHandler();
+    } else {
+      buttonNext.style.display = 'flex';
+      buttonPrevious.style.display = 'flex';
     }
+    console.log(imageClick);
+    resultsDiv.removeChild(drinkDiv);
+    clickResultsHandler();
   });
 }
 
