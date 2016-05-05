@@ -1,6 +1,6 @@
 body {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 15%;
+  margin-right: 15%;
   background-color: white;
 }
 
@@ -9,6 +9,11 @@ header {
   flex-direction: column;
   justify-content: center;
   margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
 
 #top {
