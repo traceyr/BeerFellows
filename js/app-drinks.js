@@ -1,6 +1,5 @@
 var allDrinks = [];
 
-
 //object constructor
 function Drink(drinkName, liquor, feeling, flavor, imageSrc, ingredients) {
   this.drinkName = drinkName;
@@ -11,7 +10,7 @@ function Drink(drinkName, liquor, feeling, flavor, imageSrc, ingredients) {
   this.ingredients = ingredients;
   this.like = false;
   this.disLike = false;
-  this.review = 'No reviews Currently';
+  this.review = '';
   allDrinks.push(this);
 }
 
@@ -41,9 +40,9 @@ var longIsland = new Drink('Long Island', 'gin', 'party', 'strong', 'img/long-is
 
 var imgDiv = document.getElementById('allImg');
 
+//creating ing List
 for (var i = 0; i < allDrinks.length; i++) {
   var createUl = document.createElement('ul');
-  createUl.id = 'number' + [i];
   imgDiv.appendChild(createUl);
   var createLiImages = document.createElement('li');
   createLiImages.innerHTML = allDrinks[i].imageSrc;
@@ -61,9 +60,17 @@ for (var i = 0; i < allDrinks.length; i++) {
     ingredientsLi.textContent = allDrinks[i].ingredients[j];
     ingUl.appendChild(ingredientsLi);
   }
-
-
+  var reviewLi = document.createElement('li');
+  reviewLi.textContent = 'Review:';
+  createUl.appendChild(reviewLi);
+  var reviewUl = document.createElement('ul');
+  reviewUl.id = 'number' + [i];
+  createUl.appendChild(reviewUl);
+  // var liForReview = document.createElement('li');
+  // liForReview.textContent = 'No Review';
+  // reviewUl.appendChild(liForReview);
 }
+
 //form and dropdown with full list of drinks
 var createForm = document.createElement('form');
 imgDiv.appendChild(createForm);
@@ -98,7 +105,6 @@ var textArea = document.createElement('textarea');
 textArea.setAttribute('id', 'text-area');
 createForm.appendChild(textArea);
 
-
 var addReviewBtn = document.createElement('input');
 addReviewBtn.setAttribute('type', 'button');
 addReviewBtn.id = 'addReviewBtn';
@@ -107,38 +113,45 @@ createForm.appendChild(addReviewBtn);
 
 function addReviewHandler(e){
   var text = document.getElementById('text-area').value;
-  console.log(text);
   var dropDownId = document.querySelector('select').value;
-  console.log(dropDownId);
   for (var x = 0; x < allDrinks.length; x++){
     if (dropDownId === allDrinks[x].drinkName){
-      var getUl = document.getElementById('number' + [x]);
-      console.log(getUl);
-      // var contents = document.getElementById('text-area').innerHTML;
-      console.log(allDrinks[x]);
       allDrinks[x].review = text;
-      console.log(allDrinks[x].review);
-      // createUl.appendChild(reviewLi);
-
-      var reviewLi = document.createElement('li');
-      reviewLi.textContent = allDrinks[x].review;
-      getUl.appendChild(reviewLi);
-      console.log('please work');
+      reviewLi.textContent = 'Review:';
+      var getUl = document.getElementById('number' + [x]);
+      var liForReview = document.createElement('li');
+      liForReview.textContent = text;
+      // allDrinks[x].review.push(liForReview);
+      getUl.appendChild(liForReview);
     }
-    localStorage.setItem('reviewData', JSON.stringify(allDrinks));
   }
+  localStorage.setItem('reviewData', JSON.stringify(allDrinks));
+}
 
- }
+function testingAdd() {
+  for(var p = 0; p < allDrinks.length; p++) {
+    // if(allDrinks[p].review.length > 0) {
+      // var text = document.getElementById('text-area').value;
+      // var dropDownId = document.querySelector('select').value;
+      var getUl = document.getElementById('number' + [p]);
+      var liForReview = document.createElement('li');
+      liForReview.textContent = allDrinks[p].review;
+          // allDrinks[x].review.push(liForReview);
+      getUl.appendChild(liForReview);
+    // }
+  }
+}
+
 var testingBtn = document.getElementById('addReviewBtn');
 testingBtn.addEventListener('click', addReviewHandler);
 
 (function checkLocal() {
-  // if (localStorage.reviewData) {
-  //   console.log('Local storage exists');
-  //   allDrinks = JSON.parse(localStorage.reviewData);
-  // }
-  //  else {
-  //   console.log('Local storage doesnt exist');
-  // }
-  JSON.parse(localStorage.getItem('reviewData'))
+  if (localStorage.reviewData) {
+    console.log('Local storage exists');
+    allDrinks = JSON.parse(localStorage.reviewData);
+    testingAdd();
+  } else {
+    console.log('Local storage doesnt exist');
+  }
+  // JSON.parse(localStorage.getItem('reviewData'));
 })();
