@@ -62,7 +62,7 @@ var jameson  = new Drink('Jameson', 'whiskey', 'tried & true ', 'strong', 'img/j
 var longIsland = new Drink('Long Island', 'gin', 'party', 'strong', 'img/long-island.png', ['Vodka', 'Gin', 'Rum', 'Tequila', 'Triple Sec', 'Cola', 'Lemon Juice']);
 var manhattan = new Drink('Manhattan', 'whiskey', 'tried & true', '', 'img/manhattan.png', ['Whiskey', 'Vermouth', 'Bitters', 'Maraschino Cherry']);
 var martini = new Drink('Martini', 'gin', 'tried & true', 'strong', 'img/martini.png', ['Gin', 'Vermouth', 'Lemon Twist For Garnish', 'Olive (optional)']);
-var mojito = new Drink('Mojito', 'rum', 'party', 'sweet', 'img/mojito.png' ['Rum', 'Lime Juice', 'Mint Leaves', 'Club Soda', 'Lime Wedge', 'Sugar']);
+var mojito = new Drink('Mojito', 'rum', 'party', 'sweet', 'img/mojito.png', ['Rum', 'Lime Juice', 'Mint Leaves', 'Club Soda', 'Lime Wedge', 'Sugar']);
 var oe = new Drink('Olde English', 'beer', 'tried & true', 'strong', 'img/oe.png', ['Olde English 800 is a brand of American malt liquor produced by the Miller Brewing Company']);
 var patron = new Drink('Patron', 'tequila', 'adventurous', 'strong', 'img/patron.png', ['Patron Silver Tequila']);
 var pbr = new Drink('PBR', 'beer', 'tried & true', 'strong', 'img/pbr.png', ['Pabst Blue Ribbon is a beer sold by Pabst Brewing Company, established in Milwaukee, Wisconsin in 1844 and currently based in Los Angeles.']);
@@ -71,11 +71,11 @@ var rainier = new Drink('Rainier', 'beer', 'tried & true', 'strong', 'img/rainie
 var rumAndCoke = new Drink('Rum and Coke', 'rum', 'tried & true', 'sweet', 'img/rum-and-coke.png', ['Rum', 'Coke']);
 var scoobySnack = new Drink('Scooby Snacks', 'rum', 'adventurous', '', 'img/scooby-snack.png', ['Coconut Rum', 'Melon Liqueur', 'Pineapple Juice', 'Heavy Cream']);
 var sexOnTheBeach = new Drink('Sex on the Beach', 'vodka', 'party', 'sweet', 'img/sex-on-the-beach.png', ['Vodka', 'Peach Schnapps', 'Orange Juice', 'Cranberry Juice']);
-var singaporeSling = new Drink('Singapore Sling', 'gin', 'adventurous', 'sweet', 'img/singapore-sling.png' ['Gin', 'Pineapple Juice', 'Grenadine', 'Club Soda', 'Lime Wedge', 'Cherry']);
+var singaporeSling = new Drink('Singapore Sling', 'gin', 'adventurous', 'sweet', 'img/singapore-sling.png', ['Gin', 'Pineapple Juice', 'Grenadine', 'Club Soda', 'Lime Wedge', 'Cherry']);
 var tequilaPineapple = new Drink('Tequila Pineapple', 'tequila', 'tried & true', 'sweet', 'img/tequila-pineapple.png', ['Tequila', 'Pineapple Juice']);
 var tokyoTea = new Drink('Tokyo Tea', 'rum', 'adventurous', 'strong', 'img/tokyo-tea.png', ['Vodka', 'Rum', 'Gin', 'Tequila', 'Triple Sec', 'Melon Liqueur']);
 var whiskeySour = new Drink('Whiskey Sour', 'whiskey', 'party', 'sour', 'img/whiskey-sour.png', ['Whiskey', 'Sour Mix', 'Lemon Slice', 'Cherry']);
-var whiteRussian = new Drink('White Russian', 'vodka', 'tried & true', 'strong', 'img/white-russian.png' ['Vodka', 'Kahlua', 'Heavy Cream']);
+var whiteRussian = new Drink('White Russian', 'vodka', 'tried & true', 'strong', 'img/white-russian.png', ['Vodka', 'Kahlua', 'Heavy Cream']);
 
 function startButtonHandler(event) {
   document.getElementById('introPage').style.display = 'none';
