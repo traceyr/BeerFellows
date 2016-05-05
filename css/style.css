@@ -338,3 +338,7 @@ article h1 {
   display: flex;
   flex-flow: row nowrap;
 }
+
+#crystalPic {
+  width: 200px;
+}
