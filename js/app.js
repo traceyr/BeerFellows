@@ -39,6 +39,8 @@ function Drink(drinkName, liquor, feeling, flavor, imageSrc, ingredients) {
 var screwDriver = new Drink('Screwdriver', 'vodka', 'tried & true', 'sweet', 'img/screwdriver.png', ['Vodka', 'Orange Juice']);
 var ginTonic = new Drink('Gin and Tonic', 'gin', 'tried & true', 'sour', 'img/gin-and-tonic.png', ['Gin', 'Tonic']);
 var teqSunrise = new Drink('Tequila Sunrise', 'tequila', 'adventurous', 'sweet', 'img/tequila-sunrise.png', ['Tequila', 'Orange Juice', 'Cherry Grenadine']);
+var teqSunrise2 = new Drink('Tequila Sunrise2', 'tequila', 'adventurous', 'sweet', 'img/tequila-sunrise.png', ['Tequila', 'Orange Juice', 'Cherry Grenadine']);
+var teqSunrise3 = new Drink('Tequila Sunrise3', 'tequila', 'adventurous', 'sweet', 'img/tequila-sunrise.png', ['Tequila', 'Orange Juice', 'Cherry Grenadine']);
 var amf = new Drink('Adios Mother F****r', 'tequila', 'party', 'strong', 'img/amf.png', ['Tequila', 'Vodka', 'Triple Sec', 'Gin', 'Blue Curacao', 'Sprite', 'Sour Mix']);
 var birthdayCake = new Drink('Birthday Cake Shot', 'vodka', 'party', 'sweet', 'img/birthday-cake.png', ['Baileys Irish Cream', 'Smirnoff Cake Flavored Vodka', 'Whipped Cream', 'Sprinkles']);
 var bloodyMary = new Drink('Bloody Mary', 'vodka', 'tried & true ', 'strong', 'img/bloody-mary.png', ['']);
@@ -129,6 +131,7 @@ function clickQ3Handler(event) {
   console.table(selectedDrinks);
   qAnswers.removeEventListener('click', clickQ3Handler);
   resultsBtn.addEventListener('click', clickResultsHandler);
+  gamePage.style.display = 'none';
   qAnswers.style.display = 'none';
   resultsBtn.style.display = 'flex';
   buttonPrevious.style.display = 'none';
@@ -139,9 +142,18 @@ function clickQ3Handler(event) {
 function clickResultsHandler(event) {
   resultsBtn.style.display = 'none';
   resultsDiv.style.display = 'flex';
+  var anchorLeft = document.getElementById('anchorLeft');
+  anchorLeft.style.display = 'flex';
+  var anchorMid = document.getElementById('anchorMid');
+  anchorMid.style.display = 'flex';
+  var anchorRight = document.getElementById('anchorRight');
+  anchorRight.style.display = 'flex';
+  var buttonsContainer = document.getElementById('buttonsContainer');
+  buttonsContainer.style.display = 'flex';
   var drinkDiv = document.createElement('div');
   drinkDiv.id = 'drinkDiv';
-  resultsDiv.appendChild(drinkDiv);
+  var anchorMid = document.getElementById('anchorMid');
+  anchorMid.appendChild(drinkDiv);
   //
   var drinkName = document.createElement('h4');
   console.log(selectedDrinks, imageClick);
@@ -175,7 +187,8 @@ function renderNextBtn(event){
   // var buttonNext = document.createElement('button');
   buttonNext.textContent = 'Next';
   buttonNext.id = 'nextButton';
-  resultsDiv.appendChild(buttonNext);
+  var anchorLeft = document.getElementById('anchorLeft');
+  anchorLeft.appendChild(buttonNext);
   buttonNext.addEventListener('click', function(){
     imageClick++;
     if (imageClick === 0) {
@@ -188,7 +201,7 @@ function renderNextBtn(event){
       buttonNext.style.display = 'flex';
       buttonPrevious.style.display = 'flex';
     }
-    resultsDiv.removeChild(drinkDiv);
+    anchorMid.removeChild(drinkDiv);
     clickResultsHandler();
   });
 }
@@ -198,7 +211,8 @@ function renderPreviousBtn(event){
   // var buttonPrevious = document.createElement('button');
   buttonPrevious.id = 'arrowButton';
   buttonPrevious.textContent = 'Previous';
-  resultsDiv.appendChild(buttonPrevious);
+  var anchorRight = document.getElementById('anchorRight');
+  anchorRight.appendChild(buttonPrevious);
   console.log('imageClick = ' + imageClick);
   // buttonPrevious.style.display = 'none';
   buttonPrevious.addEventListener('click', function(){
@@ -218,7 +232,7 @@ function renderPreviousBtn(event){
       buttonPrevious.style.display = 'flex';
     }
     console.log(imageClick);
-    resultsDiv.removeChild(drinkDiv);
+    anchorMid.removeChild(drinkDiv);
     clickResultsHandler();
   });
 }
