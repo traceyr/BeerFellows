@@ -11,7 +11,7 @@ function Drink(drinkName, liquor, feeling, flavor, imageSrc, ingredients) {
   this.ingredients = ingredients;
   this.like = false;
   this.disLike = false;
-  this.review = '';
+  this.review = 'No reviews Currently';
   allDrinks.push(this);
 }
 
@@ -108,7 +108,6 @@ createForm.appendChild(addReviewBtn);
 function addReviewHandler(e){
   var text = document.getElementById('text-area').value;
   console.log(text);
-  console.log(e.target.value);
   var dropDownId = document.querySelector('select').value;
   console.log(dropDownId);
   for (var x = 0; x < allDrinks.length; x++){
@@ -126,7 +125,20 @@ function addReviewHandler(e){
       getUl.appendChild(reviewLi);
       console.log('please work');
     }
+    localStorage.setItem('reviewData', JSON.stringify(allDrinks));
   }
+
  }
 var testingBtn = document.getElementById('addReviewBtn');
 testingBtn.addEventListener('click', addReviewHandler);
+
+(function checkLocal() {
+  // if (localStorage.reviewData) {
+  //   console.log('Local storage exists');
+  //   allDrinks = JSON.parse(localStorage.reviewData);
+  // }
+  //  else {
+  //   console.log('Local storage doesnt exist');
+  // }
+  JSON.parse(localStorage.getItem('reviewData'))
+})();
