@@ -156,10 +156,12 @@ function clickResultsHandler(event) {
   anchorMid.appendChild(drinkDiv);
   //
   var drinkName = document.createElement('h4');
-  console.log(selectedDrinks, imageClick);
   drinkName.textContent = selectedDrinks[imageClick].drinkName;
   drinkDiv.appendChild(drinkName);
   //
+  var drinkImage = document.createElement('img');
+  drinkImage.innerHTML = selectedDrinks[imageClick].imageSrc;
+  drinkDiv.appendChild(drinkImage);
   var drinkIngredientsList = document.createElement('ul');
   drinkDiv.appendChild(drinkIngredientsList);
 //still need image to display
