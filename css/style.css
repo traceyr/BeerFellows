@@ -1,13 +1,39 @@
 body {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 15%;
+  margin-right: 15%;
   background-color: white;
 }
 
 header {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+#top {
+  display: flex;
+  justify-content: space-around;
+  background-color: #B6A754;
+  border-top: 5px solid black;
+
+}
+
+#top p {
+  flex-flow: row nowrap;
+  font-family: 'Inconsolata', Arial;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#top-header {
+  display: flex;
+  justify-content: center;
 }
 
 main {
@@ -55,7 +81,7 @@ span {
   font-size: 18px;
   width: 85%;
   margin: 0 auto;
-  padding: 80px;
+  padding: 55px;
   border-bottom: 5px outset #B6A754;
 }
 
@@ -68,6 +94,7 @@ span {
    border: 2px solid black;
    color: #B6A754;
    margin-right: 20px;
+   height: 50px;
  }
 
  #reviewBtn {
@@ -91,7 +118,7 @@ span {
 .liqButtons {
    background-color: #B6A754;
    color: black;
-   height: 60px;
+   height: 50px;
    width: 147px;
    border-radius: 5px;
    font-size: 16px;
@@ -151,7 +178,7 @@ article h1 {
 .blk {
   background-color: black;
   color: #B6A754;
-  height: 60px;
+  height: 50px;
   width: 147px;
   border-radius: 5px;
   font-size: 16px;
@@ -165,7 +192,7 @@ article h1 {
   background-color: #B6A754;
   color: black;
   font-weight: bold;
-  height: 60px;
+  height: 50px;
   width: 147px;
   border-radius: 5px;
   font-size: 16px;
@@ -192,7 +219,7 @@ article h1 {
   justify-content: center;
   background-color: #B6A754;
   color: black;
-  height: 60px;
+  height: 50px;
   width: 147px;
   border-radius: 5px;
   font-size: 16px;
@@ -205,7 +232,7 @@ article h1 {
   justify-content: center;
   background-color: black;
   color: #B6A754;
-  height: 60px;
+  height: 50px;
   width: 147px;
   border-radius: 5px;
   font-size: 16px;
