@@ -136,6 +136,7 @@ allDrinks.sort(function(a, b){
   textLabel.innerHTML = 'Your Review';
   createForm.appendChild(textLabel);
   var textArea = document.createElement('textarea');
+  textArea.setAttribute('name', 'areaForText');
   textArea.setAttribute('id', 'text-area');
   createForm.appendChild(textArea);
 
@@ -146,7 +147,8 @@ allDrinks.sort(function(a, b){
   createForm.appendChild(addReviewBtn);
 })();
 
-function addReviewHandler(){
+function addReviewHandler(e){
+  console.log(e.target.value);
   var text = document.getElementById('text-area').value;
   var dropDownId = document.querySelector('select').value;
   for (var x = 0; x < allDrinks.length; x++){
@@ -159,6 +161,7 @@ function addReviewHandler(){
     }
   }
   localStorage.setItem('reviewData', JSON.stringify(allDrinks));
+  text.textContent = '';
 }
 
 function testingAdd() {
