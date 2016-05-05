@@ -171,6 +171,7 @@ testingBtn.addEventListener('click', addReviewHandler);
     console.log('storage does not exist');
   }
   //  else {
+  //
   //   console.log('Local storage doesnt exist');
   // }
   // JSON.parse(localStorage.getItem('reviewData'));
