@@ -65,14 +65,15 @@ span {
  #startBtn {
    background-color: black;
    border: 2px solid black;
-   color: white;
+   color: #B6A754;
    margin-right: 20px;
  }
 
  #reviewBtn {
    background-color: #B6A754;
    border: 2px solid #B6A754;
-   color: white;
+   color: black;
+   font-weight: bold;
  }
 
  #resultsBtn {
@@ -80,14 +81,20 @@ span {
  }
 
  #resultsDiv {
-   display: none;
+   display: flex;
+   flex-flow: column nowrap;
+   justify-content: space-around;
+   width: 100%;
  }
- 
+
 .liqButtons {
    background-color: #B6A754;
-   color: white;
+   color: black;
    height: 60px;
-   width: 100px;
+   width: 147px;
+   border-radius: 5px;
+   font-size: 16px;
+   font-weight: bold;
  }
 .two-buttons {
   height: 38px;
@@ -96,11 +103,18 @@ span {
 #gamePage {
   display: none;
   height: 200px;
+  flex-direction: column;
+  width: 70%;
+  margin: 0 auto;
 }
 
 #qAnswers {
   display: flex;
   justify-content: space-around;
+}
+
+#qName {
+  font-size: 30px;
 }
 
 #resultsBtn {
@@ -110,6 +124,7 @@ span {
 #firstQuestion {
   display: flex;
   align-content: center;
+  margin-bottom: 10px;
 }
 
 article h1 {
@@ -124,4 +139,92 @@ article h1 {
 #beer-icon {
   margin-left: 20px;
   margin-top: 35px;
+}
+
+.alertify {
+  background-color: black;
+  color: #B6A754;
+  font-size: 20px;
+}
+.blk {
+  background-color: black;
+  color: #B6A754;
+  height: 60px;
+  width: 147px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-size: bold;
+}
+
+#resultsBtn {
+  display: none;
+  text-align: center;
+  justify-content: center;
+  background-color: #B6A754;
+  color: black;
+  font-weight: bold;
+  height: 60px;
+  width: 147px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#resultsBut {
+  display: flex;
+  justify-content: space-around;
+  align-self: center;
+}
+
+
+#alertify-ok {
+  color: #B6A754;
+}
+
+.alertify-dialog {
+  border: 5px solid #B6A754;
+}
+
+#nextButton {
+  display: flex;
+  justify-content: center;
+  background-color: #B6A754;
+  color: black;
+  height: 60px;
+  width: 147px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+
+}
+
+#arrowButton {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  color: #B6A754;
+  height: 60px;
+  width: 147px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-size: bold;
+
+}
+
+#anchorLeft {
+  display: none;
+}
+
+#anchorMid {
+  display: none;
+  justify-content: space-around;
+
+}
+
+#anchorRight {
+  display: none;
+}
+
+#buttonsContainer {
+  display: none;
+  justify-content: center;
 }
