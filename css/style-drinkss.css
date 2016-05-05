@@ -1,0 +1,33 @@
+body {
+  background-color: pink;
+}
+
+ul li {
+  list-style: none;
+}
+
+
+.img-container img {
+  max-width: 150px;
+  max-height: 150px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+/*.allImg {
+  display: flex;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+}
+
+ul li {
+  display: block;*/
+}
