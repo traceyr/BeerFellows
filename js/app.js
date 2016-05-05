@@ -30,7 +30,6 @@ function Drink(drinkName, liquor, feeling, flavor, imageSrc, ingredients) {
   this.feeling = feeling;
   this.flavor = flavor;
   this.imageSrc = imageSrc;
-  // this.imageSrc = '' + imageSrc + '" alt="' + this.drinkName + '" id="' + this.drinkName + '';
   this.ingredients = ingredients;
   this.like = false;
   this.disLike = false;
@@ -69,7 +68,7 @@ var pbr = new Drink('PBR', 'beer', 'tried & true', 'strong', 'img/pbr.png', ['Pa
 var rr = new Drink('R&R', 'whiskey', 'adventurous', 'strong', 'img/r-r.png', ['Full-flavoured and peppery with creamy maple syrup, clean oak, hints of rose petals, dark fruit, and tangy oranges.']);
 var rainier = new Drink('Rainier', 'beer', 'tried & true', 'strong', 'img/rainier.png', ['Pure spring waters combine with golden barley and verdant hops to produce a beer rich in taste and texture.']);
 var rumAndCoke = new Drink('Rum and Coke', 'rum', 'tried & true', 'sweet', 'img/rum-and-coke.png', ['Rum', 'Coke']);
-var scoobySnack = new Drink('Scooby Snacks', 'rum', 'adventurous', '', 'img/scooby-snack.png', ['Coconut Rum', 'Melon Liqueur', 'Pineapple Juice', 'Heavy Cream']);
+var scoobySnack = new Drink('Scooby Snacks', 'rum', 'adventurous', 'sweet', 'img/scooby-snack.png', ['Coconut Rum', 'Melon Liqueur', 'Pineapple Juice', 'Heavy Cream']);
 var sexOnTheBeach = new Drink('Sex on the Beach', 'vodka', 'party', 'sweet', 'img/sex-on-the-beach.png', ['Vodka', 'Peach Schnapps', 'Orange Juice', 'Cranberry Juice']);
 var singaporeSling = new Drink('Singapore Sling', 'gin', 'adventurous', 'sweet', 'img/singapore-sling.png', ['Gin', 'Pineapple Juice', 'Grenadine', 'Club Soda', 'Lime Wedge', 'Cherry']);
 var tequilaPineapple = new Drink('Tequila Pineapple', 'tequila', 'tried & true', 'sweet', 'img/tequila-pineapple.png', ['Tequila', 'Pineapple Juice']);
@@ -106,8 +105,12 @@ function clickQ1Handler(event) {
       selectedDrinks.push(allDrinks[i]);
     }
   }
+  if (event.target.id === 'beer') {
+    clickBeerHandler();
+  }
   console.table(selectedDrinks);
   btnOne.id = answersArray[1][0];
+  console.log(answersArray[1][0]);
   btnTwo.id = answersArray[1][1];
   btnThree.id = answersArray[1][2];
   btnOne.textContent = answersArray[1][0];
@@ -151,8 +154,21 @@ function clickQ3Handler(event) {
   resultsBtn.style.display = 'flex';
   buttonPrevious.style.display = 'none';
   renderPreviousBtn();
+  renderNextBtn();
 }
-//handle next and previous function should increment or decrement if inded == 0 hide previous button if index === last hide the next button
+
+function clickBeerHandler(event) {
+  qName.style.display = 'none';
+  console.table(selectedDrinks);
+  qAnswers.removeEventListener('click', clickQ1Handler);
+  resultsBtn.addEventListener('click', clickResultsHandler);
+  gamePage.style.display = 'none';
+  qAnswers.style.display = 'none';
+  resultsBtn.style.display = 'flex';
+  buttonPrevious.style.display = 'none';
+  renderPreviousBtn();
+  renderNextBtn();
+}
 
 function clickResultsHandler(event) {
   resultsBtn.style.display = 'none';
@@ -179,41 +195,29 @@ function clickResultsHandler(event) {
   var drinkImage = document.createElement('img');
   drinkImage.src = selectedDrinks[imageClick].imageSrc;
   imageContainer.appendChild(drinkImage);
-  //
+
   var ingredientsTitle = document.createElement('h5');
   ingredientsTitle.textContent = 'Ingredients';
-  imageContainer.appendChild(ingredientsTitle);
+  drinkDiv.appendChild(ingredientsTitle);
   var drinkImage = document.createElement('img');
   drinkImage.innerHTML = selectedDrinks[imageClick].imageSrc;
   drinkDiv.appendChild(drinkImage);
   var drinkIngredientsList = document.createElement('ul');
-  imageContainer.appendChild(drinkIngredientsList);
+  drinkDiv.appendChild(drinkIngredientsList);
   for (var i = 0; i < selectedDrinks[imageClick].ingredients.length; i++) {
     var drinkIngredientsLi = document.createElement('li');
     drinkIngredientsLi.textContent = selectedDrinks[imageClick].ingredients[i];
-    // console.log(selectedDrinks[imageClick].ingredients[i]);
     drinkIngredientsList.appendChild(drinkIngredientsLi);
   }
-  //
-  // var thumbsUp = document.createElement('p');
-  // thumbsUp.textContent = 'Thumbs Up';
-  // var thumbsDown = document.createElement('p');
-  // thumbsDown.textContent = 'Thumbs Down';
-  // drinkDiv.appendChild(thumbsUp);
-  // drinkDiv.appendChild(thumbsDown);
-  //
 }
 
-  //
-  // if(imageClick > 0){
-  // }
-
 function renderNextBtn(event){
-  // var buttonNext = document.createElement('button');
   buttonNext.textContent = 'Next';
   buttonNext.id = 'nextButton';
   var anchorLeft = document.getElementById('anchorLeft');
-  anchorLeft.appendChild(buttonNext);
+  if (selectedDrinks.length > 1) {
+    anchorLeft.appendChild(buttonNext);
+  }
   buttonNext.addEventListener('click', function(){
     imageClick++;
     if (imageClick === 0) {
@@ -230,21 +234,16 @@ function renderNextBtn(event){
     clickResultsHandler();
   });
 }
-renderNextBtn();
 
 function renderPreviousBtn(event){
-  // var buttonPrevious = document.createElement('button');
   buttonPrevious.id = 'arrowButton';
   buttonPrevious.textContent = 'Previous';
   var anchorRight = document.getElementById('anchorRight');
-  anchorRight.appendChild(buttonPrevious);
+  if (selectedDrinks.length > 1) {
+    anchorRight.appendChild(buttonPrevious);
+  }
   console.log('imageClick = ' + imageClick);
-  // buttonPrevious.style.display = 'none';
   buttonPrevious.addEventListener('click', function(){
-    // if (imageClick === 0) {
-    //   console.log(imageClick);
-    //   buttonPrevious.style.display = 'none';
-    //   clickResultsHandler();
     imageClick--;
     if (imageClick === 0) {
       buttonNext.style.display = 'flex';
