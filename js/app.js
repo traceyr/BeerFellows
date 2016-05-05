@@ -51,9 +51,24 @@ var ipa = new Drink('IPA', 'beer', 'triedandtrue', 'strong', 'img/ipa.png', ['']
 var jackDaniels = new Drink('Jack Daniels', 'whiskey', 'triedandtrue', 'strong', 'img/jack-daniels.png', ['Jack Daniels Whiskey']);
 var jameson  = new Drink('Jameson', 'whiskey', 'triedandtrue', 'strong', 'img/jameson.png', ['Jameson Whiskey']);
 var longIsland = new Drink('Long Island', 'gin', 'party', 'strong', 'img/long-island.png', ['']);
-var manhattan = new Drink('Manhattan', '', 'tried & true', '', 'img/manhattan.png', ['']);
-var martini = new Drink('Martini', 'gin', 'tried & true', 'strong', 'img/martini.png', ['']);
+var manhattan = new Drink('Manhattan', '', 'triedandtrue', '', 'img/manhattan.png', ['']);
+var martini = new Drink('Martini', 'gin', 'triedandtrue', 'strong', 'img/martini.png', ['']);
 var mimosa = new Drink('Mimosa', '', '', 'sweet', 'img/mimosa.html', ['']);
+var mojito = new Drink('Mojito', 'tequila', 'party', 'strong', 'img/mojito.png' ['']);
+var oe = new Drink('Olde English', 'beer', 'triedandtrue', 'strong', 'img/oe.png', ['']);
+var patron = new Drink('Patron', 'tequila', 'party', 'strong', 'img/patron.png', ['Patron Silver']);
+var pbr = new Drink('PBR', 'beer', 'triedandtrue', 'strong', 'img/pbr.png', ['']);
+var rr = new Drink('', '', '', '', 'img/r-r.png', ['']);
+var rainier = new Drink('Rainier', 'beer', 'triedandtrue', 'strong', 'img/rainier.png', ['']);
+var rumAndCoke = new Drink('Rum and Coke', 'rum', 'triedandtrue', 'sweet', 'img/rum-and-coke.png', ['']);
+var sangria = new Drink ('Sangria', '', '', 'sweet', 'img/sangria.png', ['']);
+var scoobySnack = new Drink('Scooby Snacks', '', '', '', 'img/scooby-snack.png', ['']);
+var sexOnTheBeach = new Drink('Sex on the Beach', 'vodka', 'triedandtrue', 'sweet', 'img/sex-on-the-beach.png', ['']);
+var singaporeSling = new Drink('Singapore Sling', '', '', '', 'img/singapore-sling.png' ['']);
+var tequilaPineapple = new Drink('Tequila Pineapple', 'tequila', 'triedandtrue', 'sweet', 'img/tequila-pineapple.png', ['']);
+var tokyoTea = new Drink('Tokyo Tea', '', '', '', 'img/tokyo-tea.png', ['']);
+var whiskeySour = new Drink('Whiskey Sour', 'whiskey', '', '', 'img/whiskey-sour.png', ['']);
+var whiteRussian = new Drink('White Russian', '', '', '', 'img/white-russian.png' ['']);
 
 function startButtonHandler(event) {
   document.getElementById('introPage').style.display = 'none';
