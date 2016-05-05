@@ -166,15 +166,12 @@ function clickResultsHandler(event) {
   drinkImage.src = selectedDrinks[imageClick].imageSrc;
   imageContainer.appendChild(drinkImage);
   //
-<<<<<<< HEAD
   var ingredientsTitle = document.createElement('h5');
   ingredientsTitle.textContent = 'Ingredients';
   imageContainer.appendChild(ingredientsTitle);
-=======
   var drinkImage = document.createElement('img');
   drinkImage.innerHTML = selectedDrinks[imageClick].imageSrc;
   drinkDiv.appendChild(drinkImage);
->>>>>>> master
   var drinkIngredientsList = document.createElement('ul');
   imageContainer.appendChild(drinkIngredientsList);
   for (var i = 0; i < selectedDrinks[imageClick].ingredients.length; i++) {
