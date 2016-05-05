@@ -228,3 +228,66 @@ article h1 {
   display: none;
   justify-content: center;
 }
+
+#drinkDiv {
+  font-family: 'Orbitron', sans-serif;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: column nowrap;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  width: 350px;
+  height: 510px;
+  margin-bottom: 10px;
+}
+
+#imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  width: 300px;
+  height: 250px;
+  margin-top: 30px;
+  margin-bottom: 25px;
+}
+
+#drinkDiv h4 {
+  font-size: 20px;
+  color: tomato;
+  margin-bottom: 0px;
+}
+
+#drinkDiv h5 {
+  font-size: 14px;
+  color: tomato;
+  margin-bottom: 5px;
+}
+
+#imageContainer img {
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin-top: 20px;
+  max-height: 250px;
+  height: 100%;
+  max-width: 100%;
+}
+
+#drinkDiv #imageContainer ul {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+
+#drinkDiv #imageContainer ul li {
+  text-align: center;
+  width: 35%;
+  font-size: 12px;
+  list-style: none;
+  margin-bottom: 5px;
+}

@@ -29,7 +29,8 @@ function Drink(drinkName, liquor, feeling, flavor, imageSrc, ingredients) {
   this.liquor = liquor;
   this.feeling = feeling;
   this.flavor = flavor;
-  this.imageSrc = '<img src="' + imageSrc + '" alt="' + this.drinkName + '" id="' + this.drinkName + '">';
+  this.imageSrc = imageSrc;
+  // this.imageSrc = '' + imageSrc + '" alt="' + this.drinkName + '" id="' + this.drinkName + '';
   this.ingredients = ingredients;
   this.like = false;
   this.disLike = false;
@@ -159,10 +160,18 @@ function clickResultsHandler(event) {
   console.log(selectedDrinks, imageClick);
   drinkName.textContent = selectedDrinks[imageClick].drinkName;
   drinkDiv.appendChild(drinkName);
+  var imageContainer = document.createElement('div');
+  imageContainer.id = 'imageContainer';
+  drinkDiv.appendChild(imageContainer);
+  var drinkImage = document.createElement('img');
+  drinkImage.src = selectedDrinks[imageClick].imageSrc;
+  imageContainer.appendChild(drinkImage);
   //
+  var ingredientsTitle = document.createElement('h5');
+  ingredientsTitle.textContent = 'Ingredients';
+  imageContainer.appendChild(ingredientsTitle);
   var drinkIngredientsList = document.createElement('ul');
-  drinkDiv.appendChild(drinkIngredientsList);
-//still need image to display
+  imageContainer.appendChild(drinkIngredientsList);
   for (var i = 0; i < selectedDrinks[imageClick].ingredients.length; i++) {
     var drinkIngredientsLi = document.createElement('li');
     drinkIngredientsLi.textContent = selectedDrinks[imageClick].ingredients[i];
@@ -170,12 +179,12 @@ function clickResultsHandler(event) {
     drinkIngredientsList.appendChild(drinkIngredientsLi);
   }
   //
-  var thumbsUp = document.createElement('p');
-  thumbsUp.textContent = 'Thumbs Up';
-  var thumbsDown = document.createElement('p');
-  thumbsDown.textContent = 'Thumbs Down';
-  drinkDiv.appendChild(thumbsUp);
-  drinkDiv.appendChild(thumbsDown);
+  // var thumbsUp = document.createElement('p');
+  // thumbsUp.textContent = 'Thumbs Up';
+  // var thumbsDown = document.createElement('p');
+  // thumbsDown.textContent = 'Thumbs Down';
+  // drinkDiv.appendChild(thumbsUp);
+  // drinkDiv.appendChild(thumbsDown);
   //
 }
 
