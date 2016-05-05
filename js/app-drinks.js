@@ -40,88 +40,105 @@ var longIsland = new Drink('Long Island', 'gin', 'party', 'strong', 'img/long-is
 
 var imgDiv = document.getElementById('allImg');
 
-//creating ing List
-for (var i = 0; i < allDrinks.length; i++) {
-  var createUl = document.createElement('ul');
-  imgDiv.appendChild(createUl);
-  var createLiImages = document.createElement('li');
-  createLiImages.innerHTML = allDrinks[i].imageSrc;
-  createUl.appendChild(createLiImages);
-  var liName = document.createElement('li');
-  liName.textContent = allDrinks[i].drinkName;
-  createUl.appendChild(liName);
-  var liIngredients = document.createElement('li');
-  createUl.appendChild(liIngredients);
-  liIngredients.textContent = 'Ingredient List:';
-  var ingUl = document.createElement('ul');
-  createUl.appendChild(ingUl);
-  for (var j = 0; j < allDrinks[i].ingredients.length; j++) {
-    var ingredientsLi = document.createElement('li');
-    ingredientsLi.textContent = allDrinks[i].ingredients[j];
-    ingUl.appendChild(ingredientsLi);
+allDrinks.sort(function(a, b){
+  var nameA = a.drinkName.toLowerCase();
+  var nameB = b.drinkName.toLowerCase();
+  if (nameA < nameB) {
+    return -1;
+  } else if (nameA > nameB) {
+    return 1;
+  } else{
+    return 0;
   }
-  var reviewLi = document.createElement('li');
-  reviewLi.textContent = 'Review:';
-  createUl.appendChild(reviewLi);
-  var reviewUl = document.createElement('ul');
-  reviewUl.id = 'number' + [i];
-  createUl.appendChild(reviewUl);
-  // var liForReview = document.createElement('li');
-  // liForReview.textContent = 'No Review';
-  // reviewUl.appendChild(liForReview);
-}
+});
 
-//form and dropdown with full list of drinks
-var createForm = document.createElement('form');
-imgDiv.appendChild(createForm);
-var heading = document.createElement('h2');
-heading.innerHTML = 'Add a Review';
-createForm.appendChild(heading);
-var linebreak = document.createElement('br');
-createForm.appendChild(linebreak);
-var drinkLabel = document.createElement('label');
-drinkLabel.innerHTML = 'Name of Drink';
-createForm.appendChild(drinkLabel);
-var drinkSelect = document.createElement('select');
-drinkSelect.id = 'drink-selection';
+//creating ing List
+(function createListOfIng(){
+  for (var i = 0; i < allDrinks.length; i++) {
+    var createUl = document.createElement('ul');
+    createUl.id = 'number' + [i] + '-container';
+    imgDiv.appendChild(createUl);
+    var createImgDiv = document.createElement('div');
+    createImgDiv.className = 'img-container';
+    createUl.appendChild(createImgDiv);
+    var createLiImages = document.createElement('li');
+    createLiImages.innerHTML = allDrinks[i].imageSrc;
+    createImgDiv.appendChild(createLiImages);
 
-for (var c = 0; c < allDrinks.length; c++) {
-  var options = document.createElement('option');
-  options.value = allDrinks[c].drinkName;
-  var theText = document.createTextNode(allDrinks[c].drinkName);
-  options.appendChild(theText);
-  drinkSelect.appendChild(options);
+    var createLiDiv = document.createElement('div');
+    createLiDiv.className = 'text-container';
+    createUl.appendChild(createLiDiv);
 
-}
+    var liName = document.createElement('li');
+    liName.textContent = allDrinks[i].drinkName;
+    createLiDiv.appendChild(liName);
+    var liIngredients = document.createElement('li');
+    createLiDiv.appendChild(liIngredients);
+    liIngredients.textContent = 'Ingredient List:';
+    var ingUl = document.createElement('ul');
+    createLiDiv.appendChild(ingUl);
+    for (var j = 0; j < allDrinks[i].ingredients.length; j++) {
+      var ingredientsLi = document.createElement('li');
+      ingredientsLi.textContent = allDrinks[i].ingredients[j];
+      ingUl.appendChild(ingredientsLi);
+    }
+    var reviewLi = document.createElement('li');
+    reviewLi.textContent = allDrinks[i].review;
+    createLiDiv.appendChild(reviewLi);
+    reviewLi.id = 'number' + [i];
+  }
+})();
 
-createForm.appendChild(drinkSelect);
+(function createForm() {
+  var createForm = document.createElement('form');
+  imgDiv.appendChild(createForm);
+  var heading = document.createElement('h2');
+  heading.innerHTML = 'Add a Review';
+  createForm.appendChild(heading);
+  var linebreak = document.createElement('br');
+  createForm.appendChild(linebreak);
+  var drinkLabel = document.createElement('label');
+  drinkLabel.innerHTML = 'Name of Drink';
+  createForm.appendChild(drinkLabel);
+  var drinkSelect = document.createElement('select');
+  drinkSelect.id = 'drink-selection';
 
-var linebreakTwo = document.createElement('br');
-createForm.appendChild(linebreakTwo);
-var textLabel = document.createElement('label');
-textLabel.innerHTML = 'Your Review';
-createForm.appendChild(textLabel);
-var textArea = document.createElement('textarea');
-textArea.setAttribute('id', 'text-area');
-createForm.appendChild(textArea);
+  for (var c = 0; c < allDrinks.length; c++) {
+    var options = document.createElement('option');
+    options.value = allDrinks[c].drinkName;
+    var theText = document.createTextNode(allDrinks[c].drinkName);
+    options.appendChild(theText);
+    drinkSelect.appendChild(options);
 
-var addReviewBtn = document.createElement('input');
-addReviewBtn.setAttribute('type', 'button');
-addReviewBtn.id = 'addReviewBtn';
-addReviewBtn.value = 'Add Review';
-createForm.appendChild(addReviewBtn);
+  }
 
-function addReviewHandler(e){
+  createForm.appendChild(drinkSelect);
+
+  var linebreakTwo = document.createElement('br');
+  createForm.appendChild(linebreakTwo);
+  var textLabel = document.createElement('label');
+  textLabel.innerHTML = 'Your Review';
+  createForm.appendChild(textLabel);
+  var textArea = document.createElement('textarea');
+  textArea.setAttribute('id', 'text-area');
+  createForm.appendChild(textArea);
+
+  var addReviewBtn = document.createElement('input');
+  addReviewBtn.setAttribute('type', 'button');
+  addReviewBtn.id = 'addReviewBtn';
+  addReviewBtn.value = 'Add Review';
+  createForm.appendChild(addReviewBtn);
+})();
+
+function addReviewHandler(){
   var text = document.getElementById('text-area').value;
   var dropDownId = document.querySelector('select').value;
   for (var x = 0; x < allDrinks.length; x++){
     if (dropDownId === allDrinks[x].drinkName){
-      allDrinks[x].review = text;
-      reviewLi.textContent = 'Review:';
+      allDrinks[x].review = 'Review: ' + text;
       var getUl = document.getElementById('number' + [x]);
       var liForReview = document.createElement('li');
-      liForReview.textContent = text;
-      // allDrinks[x].review.push(liForReview);
+      liForReview.textContent = 'Review: ' + text;
       getUl.appendChild(liForReview);
     }
   }
@@ -130,15 +147,10 @@ function addReviewHandler(e){
 
 function testingAdd() {
   for(var p = 0; p < allDrinks.length; p++) {
-    // if(allDrinks[p].review.length > 0) {
-      // var text = document.getElementById('text-area').value;
-      // var dropDownId = document.querySelector('select').value;
-      var getUl = document.getElementById('number' + [p]);
-      var liForReview = document.createElement('li');
-      liForReview.textContent = allDrinks[p].review;
-          // allDrinks[x].review.push(liForReview);
-      getUl.appendChild(liForReview);
-    // }
+    var getUl = document.getElementById('number' + [p]);
+    var liForReview = document.createElement('li');
+    liForReview.textContent = allDrinks[p].review;
+    getUl.appendChild(liForReview);
   }
 }
 
