@@ -1,6 +1,5 @@
 var allDrinks = [];
 
-
 //object constructor
 function Drink(drinkName, liquor, feeling, flavor, imageSrc, ingredients) {
   this.drinkName = drinkName;
@@ -78,7 +77,6 @@ for (var i = 0; i < allDrinks.length; i++) {
     ingUl.appendChild(ingredientsLi);
   }
 
-
 }
 //form and dropdown with full list of drinks
 var createForm = document.createElement('form');
@@ -114,7 +112,6 @@ var textArea = document.createElement('textarea');
 textArea.setAttribute('id', 'text-area');
 createForm.appendChild(textArea);
 
-
 var addReviewBtn = document.createElement('input');
 addReviewBtn.setAttribute('type', 'button');
 addReviewBtn.id = 'addReviewBtn';
@@ -144,17 +141,37 @@ function addReviewHandler(e){
     localStorage.setItem('reviewData', JSON.stringify(allDrinks));
   }
 
- }
+}
 var testingBtn = document.getElementById('addReviewBtn');
 testingBtn.addEventListener('click', addReviewHandler);
 
+// (function checkForLocalStorage(){
+//   if(localStorage.userClickData){
+//     console.log('Storage Exists');
+//     var imagesParsed = JSON.parse(localStorage.userClickData);
+//     for(var i = 0; i < imageArr.length; i++){
+//       imageArr = imagesParsed;
+//     };
+//   }else{
+//     console.log('Storage does not exist');
+//   }
+// })();
+// document.getElementById('lcClear').addEventListener('click', function(){
+//   localStorage.clear();
+// });
+
 (function checkLocal() {
-  // if (localStorage.reviewData) {
-  //   console.log('Local storage exists');
-  //   allDrinks = JSON.parse(localStorage.reviewData);
-  // }
+  if (localStorage.reviewData) {
+    console.log('Local storage exists');
+    var drinksParsed = JSON.parse(localStorage.reviewData);
+    for(var i = 0; i < allDrinks.length; i++){
+      allDrinks = drinksParsed;
+    };
+  } else {
+    console.log('storage does not exist');
+  }
   //  else {
   //   console.log('Local storage doesnt exist');
   // }
-  JSON.parse(localStorage.getItem('reviewData'))
+  // JSON.parse(localStorage.getItem('reviewData'));
 })();
