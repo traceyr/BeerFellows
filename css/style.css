@@ -353,7 +353,8 @@ article h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 97%;
+  width: 98.5%;
+  font-size: 18px;
   padding: 10px;
   background-color: #B6A754;
   border-radius: 5px;
@@ -369,7 +370,8 @@ article h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 97%;
+  font-size: 18px;
+  width: 98.5%;
   padding: 10px;
   background-color: #B6A754;
   border-radius: 5px;
@@ -385,7 +387,7 @@ article h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 97%;
+  width: 98.5%;
   padding: 10px;
   background-color: #B6A754;
   border-radius: 5px;
@@ -401,7 +403,8 @@ article h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 97%;
+  font-size: 18px;
+  width: 98.5%;
   padding: 10px;
   background-color: #B6A754;
   border-radius: 5px;
