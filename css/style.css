@@ -321,7 +321,8 @@ article h1 {
 #drinkDiv ul li {
   text-align: center;
   width: 100%;
-  font-size: 12px;
+  font-size: 16px;
+  font-family: arial;
   color: white;
   list-style: none;
   margin-bottom: 5px;
@@ -337,4 +338,77 @@ article h1 {
 #nav-bar p {
   display: flex;
   flex-flow: row nowrap;
+}
+
+#profile-container {
+  font-family: 'Inconsolata', Arial;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+
+#crystal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 97%;
+  padding: 10px;
+  background-color: #B6A754;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+#crystal img {
+  margin-right: 10px;
+  width: 113px;
+}
+
+#james {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 97%;
+  padding: 10px;
+  background-color: #B6A754;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+#james img {
+  margin-right: 10px;
+  width: 113px;
+}
+
+#tre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 97%;
+  padding: 10px;
+  background-color: #B6A754;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+#tre img {
+  margin-right: 10px;
+  width: 113px;
+}
+
+#tracey {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 97%;
+  padding: 10px;
+  background-color: #B6A754;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+#tracey img {
+  margin-right: 10px;
+  width: 113px;
 }
