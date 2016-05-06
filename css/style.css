@@ -118,7 +118,7 @@ span {
 .liqButtons {
    background-color: #B6A754;
    color: black;
-   height: 50px;
+   height: 60px;
    width: 147px;
    border-radius: 5px;
    font-size: 16px;
@@ -172,13 +172,13 @@ article h1 {
 
 .alertify {
   background-color: black;
-  color: red;
+  color: white;
   font-size: 20px;
 }
 .blk {
   background-color: black;
   color: #B6A754;
-  height: 50px;
+  height: 60px;
   width: 147px;
   border-radius: 5px;
   font-size: 16px;
@@ -192,7 +192,7 @@ article h1 {
   background-color: #B6A754;
   color: black;
   font-weight: bold;
-  height: 50px;
+  height: 60px;
   width: 147px;
   border-radius: 5px;
   font-size: 16px;

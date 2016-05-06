@@ -68,45 +68,10 @@ allDrinks.sort(function(a, b){
   }
 });
 
-//creating ing List
-(function createListOfIng(){
-  for (var i = 0; i < allDrinks.length; i++) {
-    var createUl = document.createElement('ul');
-    createUl.id = 'number' + [i] + '-container';
-    imgDiv.appendChild(createUl);
-    var createImgDiv = document.createElement('div');
-    createImgDiv.className = 'img-container';
-    createUl.appendChild(createImgDiv);
-    var createLiImages = document.createElement('li');
-    createLiImages.innerHTML = allDrinks[i].imageSrc;
-    createImgDiv.appendChild(createLiImages);
-
-    var createLiDiv = document.createElement('div');
-    createLiDiv.className = 'text-container';
-    createUl.appendChild(createLiDiv);
-
-    var liName = document.createElement('li');
-    liName.textContent = allDrinks[i].drinkName;
-    createLiDiv.appendChild(liName);
-    var liIngredients = document.createElement('li');
-    createLiDiv.appendChild(liIngredients);
-    liIngredients.textContent = 'Ingredient List:';
-    var ingUl = document.createElement('ul');
-    createLiDiv.appendChild(ingUl);
-    for (var j = 0; j < allDrinks[i].ingredients.length; j++) {
-      var ingredientsLi = document.createElement('li');
-      ingredientsLi.textContent = allDrinks[i].ingredients[j];
-      ingUl.appendChild(ingredientsLi);
-    }
-    var reviewLi = document.createElement('li');
-    reviewLi.textContent = allDrinks[i].review;
-    createLiDiv.appendChild(reviewLi);
-    reviewLi.id = 'number' + [i];
-  }
-})();
-
+//creating form
 (function createForm() {
   var createForm = document.createElement('form');
+  createForm.id = 'form-container';
   imgDiv.appendChild(createForm);
   var heading = document.createElement('h2');
   heading.innerHTML = 'Add a Review';
@@ -145,6 +110,50 @@ allDrinks.sort(function(a, b){
   addReviewBtn.id = 'addReviewBtn';
   addReviewBtn.value = 'Add Review';
   createForm.appendChild(addReviewBtn);
+})();
+
+//creating ing List
+(function createListOfIng(){
+  for (var i = 0; i < allDrinks.length; i++) {
+    var createUl = document.createElement('ul');
+    createUl.id = 'number' + [i] + '-container';
+    createUl.className = 'drink-container';
+    imgDiv.appendChild(createUl);
+    var createImgDiv = document.createElement('div');
+    createImgDiv.className = 'img-container';
+    createUl.appendChild(createImgDiv);
+
+    // var createLiImages = document.createElement('li');
+    // createLiImages.innerHTML = allDrinks[i].imageSrc;
+    // createImgDiv.appendChild(createLiImages);
+
+    var aTag = document.createElement('a');
+    aTag.setAttribute('href', '#form-container');
+    aTag.innerHTML = allDrinks[i].imageSrc;
+    createImgDiv.appendChild(aTag);
+
+    var createLiDiv = document.createElement('div');
+    createLiDiv.className = 'text-container';
+    createUl.appendChild(createLiDiv);
+
+    var liName = document.createElement('li');
+    liName.textContent = allDrinks[i].drinkName;
+    createLiDiv.appendChild(liName);
+    var liIngredients = document.createElement('li');
+    createLiDiv.appendChild(liIngredients);
+    liIngredients.textContent = 'Ingredient List:';
+    var ingUl = document.createElement('ul');
+    createLiDiv.appendChild(ingUl);
+    for (var j = 0; j < allDrinks[i].ingredients.length; j++) {
+      var ingredientsLi = document.createElement('li');
+      ingredientsLi.textContent = allDrinks[i].ingredients[j];
+      ingUl.appendChild(ingredientsLi);
+    }
+    var reviewLi = document.createElement('li');
+    reviewLi.textContent = allDrinks[i].review;
+    createLiDiv.appendChild(reviewLi);
+    reviewLi.id = 'number' + [i];
+  }
 })();
 
 function addReviewHandler(e){
